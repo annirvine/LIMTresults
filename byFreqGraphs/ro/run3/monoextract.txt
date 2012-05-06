@@ -1,0 +1,797 @@
+12/05/06 03:39:07 INFO lexinduct.FreqBinInductor: 
+----------- Configuration -----------
+corpora.crawls.Path: /mnt/data/anni/Crawls/Crawls.ro-en.01162012/Combined/
+corpora.crawls.SrcSubDir: ro/
+corpora.crawls.TrgSubDir: en/
+corpora.crawls.DateFrom: 95-01-31
+corpora.crawls.DateTo: 12-01-31
+corpora.crawls.OneSentPerLine: true
+resources.dictionary.Path: /home/anni/Resources/MTurkDicts/
+resources.dictionary.Dictionary: mturk.ro
+preprocessing.phrases.MaxPhraseLength: 1
+preprocessing.phrases.CaseSensitive: true
+preprocessing.Path: /mnt/data/anni/Experiments/LexInductExps/ro/byFreq/run3/preprocessing/
+preprocessing.time.Align: false
+preprocessing.input.Context: crawls
+preprocessing.input.Time: crawls
+preprocessing.FilterRomanTrg: false
+preprocessing.context.TrgEqClass: babel.content.eqclasses.SimpleEquivalenceClass
+preprocessing.context.SrcEqClass: babel.content.eqclasses.SimpleEquivalenceClass
+preprocessing.context.PruneEqIfOccursMoreThan: -1
+preprocessing.context.PruneEqIfOccursFewerThan: 5
+preprocessing.context.PruneContextToSize: -1
+preprocessing.context.Window: 2
+preprocessing.candidates.TrgEqClass: babel.content.eqclasses.SimpleEquivalenceClass
+preprocessing.candidates.SrcEqClass: babel.content.eqclasses.SimpleEquivalenceClass
+preprocessing.candidates.PruneIfOccursMoreThan: -1
+preprocessing.candidates.PruneIfOccursFewerThan: 0
+preprocessing.candidates.PruneMostFrequentSrc: -1
+preprocessing.candidates.PruneMostFrequentTrg: -1
+output.Path: /mnt/data/anni/Experiments/LexInductExps/ro/byFreq/run3/output/
+experiments.time.SlidingWindow: true
+experiments.time.WindowSize: 3
+experiments.RandomSource: false
+experiments.NumSource: 3000
+experiments.NumSourceBins: 10
+experiments.NumTranslationsToAddPerSource: 100
+experiments.DictionaryPruneNumTranslations: -1
+experiments.DictionaryAllowSeedTestOverlap: true
+experiments.NumRankingThreads: 1
+experiments.DoTime: true
+experiments.DoContext: true
+experiments.DoEditDistance: true
+experiments.DoAggregate: true
+-------------------------------------
+12/05/06 03:39:07 INFO lexinduct.FreqBinInductPreparer:  - Constructing contextual equivalence classes...
+12/05/06 03:41:15 INFO lexinduct.FreqBinInductPreparer:  - Source context classes = 38481, max occurrences = 39027
+12/05/06 03:41:15 INFO lexinduct.FreqBinInductPreparer:  - Target context classes = 39466, max occurrences = 454497
+12/05/06 03:41:15 INFO lexinduct.FreqBinInductPreparer:  - Reading/preparing seed dictionary ...
+12/05/06 03:41:16 INFO lexinduct.FreqBinInductPreparer:  - Seed dictionary: Dictionary [SeedDictionary] contains 5911 source language entries.
+12/05/06 03:41:16 INFO lexinduct.FreqBinInductPreparer:  - Reading/preparing transliteration dictionary ...
+12/05/06 03:41:16 INFO lexinduct.FreqBinInductPreparer:  - No transliteration dictionary specified
+12/05/06 03:41:16 INFO lexinduct.FreqBinInductPreparer:  - Filtering source words: keeping those in dict [Dictionary [SeedDictionary] contains 5911 source language entries.] and occuring (10,5000) times ...
+12/05/06 03:41:16 INFO lexinduct.FreqBinInductPreparer:  - Filtered source classes: 4438
+12/05/06 03:41:16 INFO lexinduct.FreqBinInductPreparer:  - Selecting 3000 source candidates from 10 bins ...
+12/05/06 03:41:17 INFO lexinduct.FreqBinInductPreparer:  - Bin 0: counts between 293.0 and 4433.0, average = 950.3 and 300 source candidates ...
+12/05/06 03:41:17 INFO lexinduct.FreqBinInductPreparer:  - Bin 1: counts between 149.0 and 290.0, average = 204.92666666666668 and 300 source candidates ...
+12/05/06 03:41:17 INFO lexinduct.FreqBinInductPreparer:  - Bin 2: counts between 92.0 and 149.0, average = 116.57333333333334 and 300 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Bin 3: counts between 64.0 and 92.0, average = 76.84 and 300 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Bin 4: counts between 46.0 and 64.0, average = 54.43 and 300 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Bin 5: counts between 35.0 and 46.0, average = 40.05 and 300 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Bin 6: counts between 27.0 and 35.0, average = 30.456666666666667 and 300 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Bin 7: counts between 20.0 and 27.0, average = 23.313333333333333 and 300 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Bin 8: counts between 15.0 and 20.0, average = 17.433333333333334 and 300 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Bin 9: counts between 11.0 and 15.0, average = 12.583333333333334 and 300 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Selected 3000 source candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Selecting target candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Filtering target words: keeping those occuring (10,2147483647) times ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Filtered target classes: 19765
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Selected 19765 target candidates ...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Filtering source contextual words: keeping those in dict [Dictionary [SeedDictionary] contains 5911 source language entries.] and occuring (5,-1) times...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Filtered context source classes: 5118
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Filtering target contextual words: keeping those in dict [Dictionary [SeedDictionary] contains 5911 source language entries.] and occuring (5,-1) times...
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Filtered context target classes: 3652
+12/05/06 03:41:18 INFO lexinduct.FreqBinInductPreparer:  - Collecting context and time phrase properties for 3000 source and 19765 target phrases  ...
+12/05/06 03:44:03 INFO lexinduct.FreqBinInductPreparer:  - Projecting and scoring source contextual items with babel.ranking.scorers.context.FungS1Scorer and time distributions with babel.ranking.scorers.timedistribution.TimeDistributionCosineScorer...
+12/05/06 03:44:06 INFO lexinduct.FreqBinInductPreparer:  - Scoring target contextual items with babel.ranking.scorers.context.FungS1Scorer and time distributions with babel.ranking.scorers.timedistribution.TimeDistributionCosineScorer...
+12/05/06 03:44:18 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 0 ---
+12/05/06 03:44:18 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 03:44:18 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 03:44:37 INFO ranking.Ranker: 5% done.
+12/05/06 03:44:56 INFO ranking.Ranker: 10% done.
+12/05/06 03:45:13 INFO ranking.Ranker: 15% done.
+12/05/06 03:45:30 INFO ranking.Ranker: 20% done.
+12/05/06 03:45:48 INFO ranking.Ranker: 25% done.
+12/05/06 03:46:05 INFO ranking.Ranker: 30% done.
+12/05/06 03:46:22 INFO ranking.Ranker: 35% done.
+12/05/06 03:46:40 INFO ranking.Ranker: 40% done.
+12/05/06 03:46:59 INFO ranking.Ranker: 45% done.
+12/05/06 03:47:21 INFO ranking.Ranker: 50% done.
+12/05/06 03:47:37 INFO ranking.Ranker: 55% done.
+12/05/06 03:47:57 INFO ranking.Ranker: 60% done.
+12/05/06 03:48:18 INFO ranking.Ranker: 65% done.
+12/05/06 03:48:36 INFO ranking.Ranker: 70% done.
+12/05/06 03:48:56 INFO ranking.Ranker: 75% done.
+12/05/06 03:49:14 INFO ranking.Ranker: 80% done.
+12/05/06 03:49:31 INFO ranking.Ranker: 85% done.
+12/05/06 03:49:52 INFO ranking.Ranker: 90% done.
+12/05/06 03:50:15 INFO ranking.Ranker: 95% done.
+12/05/06 03:50:32 INFO ranking.Ranker: 100% done.
+12/05/06 03:50:32 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 03:50:33 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 03:50:33 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 03:50:49 INFO ranking.Ranker: 5% done.
+12/05/06 03:51:06 INFO ranking.Ranker: 10% done.
+12/05/06 03:51:21 INFO ranking.Ranker: 15% done.
+12/05/06 03:51:36 INFO ranking.Ranker: 20% done.
+12/05/06 03:51:50 INFO ranking.Ranker: 25% done.
+12/05/06 03:52:03 INFO ranking.Ranker: 30% done.
+12/05/06 03:52:21 INFO ranking.Ranker: 35% done.
+12/05/06 03:52:34 INFO ranking.Ranker: 40% done.
+12/05/06 03:52:50 INFO ranking.Ranker: 45% done.
+12/05/06 03:53:05 INFO ranking.Ranker: 50% done.
+12/05/06 03:53:20 INFO ranking.Ranker: 55% done.
+12/05/06 03:53:36 INFO ranking.Ranker: 60% done.
+12/05/06 03:53:51 INFO ranking.Ranker: 65% done.
+12/05/06 03:54:07 INFO ranking.Ranker: 70% done.
+12/05/06 03:54:23 INFO ranking.Ranker: 75% done.
+12/05/06 03:54:39 INFO ranking.Ranker: 80% done.
+12/05/06 03:54:54 INFO ranking.Ranker: 85% done.
+12/05/06 03:55:10 INFO ranking.Ranker: 90% done.
+12/05/06 03:55:25 INFO ranking.Ranker: 95% done.
+12/05/06 03:55:38 INFO ranking.Ranker: 100% done.
+12/05/06 03:55:38 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 03:55:39 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 03:55:39 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 03:55:40 INFO ranking.Ranker: 5% done.
+12/05/06 03:55:42 INFO ranking.Ranker: 10% done.
+12/05/06 03:55:43 INFO ranking.Ranker: 15% done.
+12/05/06 03:55:45 INFO ranking.Ranker: 20% done.
+12/05/06 03:55:46 INFO ranking.Ranker: 25% done.
+12/05/06 03:55:47 INFO ranking.Ranker: 30% done.
+12/05/06 03:55:49 INFO ranking.Ranker: 35% done.
+12/05/06 03:55:50 INFO ranking.Ranker: 40% done.
+12/05/06 03:55:52 INFO ranking.Ranker: 45% done.
+12/05/06 03:55:53 INFO ranking.Ranker: 50% done.
+12/05/06 03:55:55 INFO ranking.Ranker: 55% done.
+12/05/06 03:55:56 INFO ranking.Ranker: 60% done.
+12/05/06 03:55:57 INFO ranking.Ranker: 65% done.
+12/05/06 03:55:59 INFO ranking.Ranker: 70% done.
+12/05/06 03:56:00 INFO ranking.Ranker: 75% done.
+12/05/06 03:56:01 INFO ranking.Ranker: 80% done.
+12/05/06 03:56:03 INFO ranking.Ranker: 85% done.
+12/05/06 03:56:04 INFO ranking.Ranker: 90% done.
+12/05/06 03:56:05 INFO ranking.Ranker: 95% done.
+12/05/06 03:56:07 INFO ranking.Ranker: 100% done.
+12/05/06 03:56:07 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 03:56:07 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 03:56:07 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 03:56:15 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 1 ---
+12/05/06 03:56:15 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 03:56:15 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 03:56:26 INFO ranking.Ranker: 5% done.
+12/05/06 03:56:37 INFO ranking.Ranker: 10% done.
+12/05/06 03:56:49 INFO ranking.Ranker: 15% done.
+12/05/06 03:57:02 INFO ranking.Ranker: 20% done.
+12/05/06 03:57:17 INFO ranking.Ranker: 25% done.
+12/05/06 03:57:29 INFO ranking.Ranker: 30% done.
+12/05/06 03:57:42 INFO ranking.Ranker: 35% done.
+12/05/06 03:57:53 INFO ranking.Ranker: 40% done.
+12/05/06 03:58:05 INFO ranking.Ranker: 45% done.
+12/05/06 03:58:19 INFO ranking.Ranker: 50% done.
+12/05/06 03:58:30 INFO ranking.Ranker: 55% done.
+12/05/06 03:58:42 INFO ranking.Ranker: 60% done.
+12/05/06 03:58:56 INFO ranking.Ranker: 65% done.
+12/05/06 03:59:10 INFO ranking.Ranker: 70% done.
+12/05/06 03:59:24 INFO ranking.Ranker: 75% done.
+12/05/06 03:59:37 INFO ranking.Ranker: 80% done.
+12/05/06 03:59:49 INFO ranking.Ranker: 85% done.
+12/05/06 04:00:01 INFO ranking.Ranker: 90% done.
+12/05/06 04:00:12 INFO ranking.Ranker: 95% done.
+12/05/06 04:00:25 INFO ranking.Ranker: 100% done.
+12/05/06 04:00:25 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:00:26 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:00:26 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:00:37 INFO ranking.Ranker: 5% done.
+12/05/06 04:00:50 INFO ranking.Ranker: 10% done.
+12/05/06 04:01:02 INFO ranking.Ranker: 15% done.
+12/05/06 04:01:15 INFO ranking.Ranker: 20% done.
+12/05/06 04:01:27 INFO ranking.Ranker: 25% done.
+12/05/06 04:01:39 INFO ranking.Ranker: 30% done.
+12/05/06 04:01:52 INFO ranking.Ranker: 35% done.
+12/05/06 04:02:04 INFO ranking.Ranker: 40% done.
+12/05/06 04:02:17 INFO ranking.Ranker: 45% done.
+12/05/06 04:02:28 INFO ranking.Ranker: 50% done.
+12/05/06 04:02:43 INFO ranking.Ranker: 55% done.
+12/05/06 04:02:55 INFO ranking.Ranker: 60% done.
+12/05/06 04:03:07 INFO ranking.Ranker: 65% done.
+12/05/06 04:03:18 INFO ranking.Ranker: 70% done.
+12/05/06 04:03:30 INFO ranking.Ranker: 75% done.
+12/05/06 04:03:43 INFO ranking.Ranker: 80% done.
+12/05/06 04:03:55 INFO ranking.Ranker: 85% done.
+12/05/06 04:04:09 INFO ranking.Ranker: 90% done.
+12/05/06 04:04:21 INFO ranking.Ranker: 95% done.
+12/05/06 04:04:32 INFO ranking.Ranker: 100% done.
+12/05/06 04:04:32 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:04:33 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:04:33 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:04:34 INFO ranking.Ranker: 5% done.
+12/05/06 04:04:35 INFO ranking.Ranker: 10% done.
+12/05/06 04:04:36 INFO ranking.Ranker: 15% done.
+12/05/06 04:04:38 INFO ranking.Ranker: 20% done.
+12/05/06 04:04:39 INFO ranking.Ranker: 25% done.
+12/05/06 04:04:41 INFO ranking.Ranker: 30% done.
+12/05/06 04:04:42 INFO ranking.Ranker: 35% done.
+12/05/06 04:04:43 INFO ranking.Ranker: 40% done.
+12/05/06 04:04:44 INFO ranking.Ranker: 45% done.
+12/05/06 04:04:46 INFO ranking.Ranker: 50% done.
+12/05/06 04:04:47 INFO ranking.Ranker: 55% done.
+12/05/06 04:04:48 INFO ranking.Ranker: 60% done.
+12/05/06 04:04:49 INFO ranking.Ranker: 65% done.
+12/05/06 04:04:51 INFO ranking.Ranker: 70% done.
+12/05/06 04:04:52 INFO ranking.Ranker: 75% done.
+12/05/06 04:04:54 INFO ranking.Ranker: 80% done.
+12/05/06 04:04:55 INFO ranking.Ranker: 85% done.
+12/05/06 04:04:56 INFO ranking.Ranker: 90% done.
+12/05/06 04:04:58 INFO ranking.Ranker: 95% done.
+12/05/06 04:04:59 INFO ranking.Ranker: 100% done.
+12/05/06 04:04:59 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:04:59 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:04:59 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:05:07 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 2 ---
+12/05/06 04:05:07 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 04:05:07 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:05:17 INFO ranking.Ranker: 5% done.
+12/05/06 04:05:27 INFO ranking.Ranker: 10% done.
+12/05/06 04:05:38 INFO ranking.Ranker: 15% done.
+12/05/06 04:05:48 INFO ranking.Ranker: 20% done.
+12/05/06 04:05:57 INFO ranking.Ranker: 25% done.
+12/05/06 04:06:05 INFO ranking.Ranker: 30% done.
+12/05/06 04:06:15 INFO ranking.Ranker: 35% done.
+12/05/06 04:06:24 INFO ranking.Ranker: 40% done.
+12/05/06 04:06:33 INFO ranking.Ranker: 45% done.
+12/05/06 04:06:44 INFO ranking.Ranker: 50% done.
+12/05/06 04:06:53 INFO ranking.Ranker: 55% done.
+12/05/06 04:07:04 INFO ranking.Ranker: 60% done.
+12/05/06 04:07:13 INFO ranking.Ranker: 65% done.
+12/05/06 04:07:22 INFO ranking.Ranker: 70% done.
+12/05/06 04:07:34 INFO ranking.Ranker: 75% done.
+12/05/06 04:07:43 INFO ranking.Ranker: 80% done.
+12/05/06 04:07:53 INFO ranking.Ranker: 85% done.
+12/05/06 04:08:03 INFO ranking.Ranker: 90% done.
+12/05/06 04:08:13 INFO ranking.Ranker: 95% done.
+12/05/06 04:08:24 INFO ranking.Ranker: 100% done.
+12/05/06 04:08:24 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:08:25 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:08:25 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:08:36 INFO ranking.Ranker: 5% done.
+12/05/06 04:08:47 INFO ranking.Ranker: 10% done.
+12/05/06 04:08:58 INFO ranking.Ranker: 15% done.
+12/05/06 04:09:10 INFO ranking.Ranker: 20% done.
+12/05/06 04:09:21 INFO ranking.Ranker: 25% done.
+12/05/06 04:09:33 INFO ranking.Ranker: 30% done.
+12/05/06 04:09:45 INFO ranking.Ranker: 35% done.
+12/05/06 04:09:57 INFO ranking.Ranker: 40% done.
+12/05/06 04:10:09 INFO ranking.Ranker: 45% done.
+12/05/06 04:10:20 INFO ranking.Ranker: 50% done.
+12/05/06 04:10:31 INFO ranking.Ranker: 55% done.
+12/05/06 04:10:43 INFO ranking.Ranker: 60% done.
+12/05/06 04:10:54 INFO ranking.Ranker: 65% done.
+12/05/06 04:11:05 INFO ranking.Ranker: 70% done.
+12/05/06 04:11:16 INFO ranking.Ranker: 75% done.
+12/05/06 04:11:26 INFO ranking.Ranker: 80% done.
+12/05/06 04:11:38 INFO ranking.Ranker: 85% done.
+12/05/06 04:11:49 INFO ranking.Ranker: 90% done.
+12/05/06 04:12:01 INFO ranking.Ranker: 95% done.
+12/05/06 04:12:14 INFO ranking.Ranker: 100% done.
+12/05/06 04:12:14 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:12:14 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:12:14 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:12:16 INFO ranking.Ranker: 5% done.
+12/05/06 04:12:17 INFO ranking.Ranker: 10% done.
+12/05/06 04:12:19 INFO ranking.Ranker: 15% done.
+12/05/06 04:12:20 INFO ranking.Ranker: 20% done.
+12/05/06 04:12:21 INFO ranking.Ranker: 25% done.
+12/05/06 04:12:23 INFO ranking.Ranker: 30% done.
+12/05/06 04:12:24 INFO ranking.Ranker: 35% done.
+12/05/06 04:12:26 INFO ranking.Ranker: 40% done.
+12/05/06 04:12:27 INFO ranking.Ranker: 45% done.
+12/05/06 04:12:28 INFO ranking.Ranker: 50% done.
+12/05/06 04:12:30 INFO ranking.Ranker: 55% done.
+12/05/06 04:12:31 INFO ranking.Ranker: 60% done.
+12/05/06 04:12:32 INFO ranking.Ranker: 65% done.
+12/05/06 04:12:34 INFO ranking.Ranker: 70% done.
+12/05/06 04:12:35 INFO ranking.Ranker: 75% done.
+12/05/06 04:12:36 INFO ranking.Ranker: 80% done.
+12/05/06 04:12:38 INFO ranking.Ranker: 85% done.
+12/05/06 04:12:39 INFO ranking.Ranker: 90% done.
+12/05/06 04:12:40 INFO ranking.Ranker: 95% done.
+12/05/06 04:12:42 INFO ranking.Ranker: 100% done.
+12/05/06 04:12:42 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:12:42 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:12:42 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:12:49 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 3 ---
+12/05/06 04:12:49 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 04:12:49 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:12:57 INFO ranking.Ranker: 5% done.
+12/05/06 04:13:04 INFO ranking.Ranker: 10% done.
+12/05/06 04:13:12 INFO ranking.Ranker: 15% done.
+12/05/06 04:13:21 INFO ranking.Ranker: 20% done.
+12/05/06 04:13:29 INFO ranking.Ranker: 25% done.
+12/05/06 04:13:36 INFO ranking.Ranker: 30% done.
+12/05/06 04:13:44 INFO ranking.Ranker: 35% done.
+12/05/06 04:13:52 INFO ranking.Ranker: 40% done.
+12/05/06 04:13:59 INFO ranking.Ranker: 45% done.
+12/05/06 04:14:07 INFO ranking.Ranker: 50% done.
+12/05/06 04:14:14 INFO ranking.Ranker: 55% done.
+12/05/06 04:14:23 INFO ranking.Ranker: 60% done.
+12/05/06 04:14:30 INFO ranking.Ranker: 65% done.
+12/05/06 04:14:38 INFO ranking.Ranker: 70% done.
+12/05/06 04:14:46 INFO ranking.Ranker: 75% done.
+12/05/06 04:14:55 INFO ranking.Ranker: 80% done.
+12/05/06 04:15:03 INFO ranking.Ranker: 85% done.
+12/05/06 04:15:10 INFO ranking.Ranker: 90% done.
+12/05/06 04:15:18 INFO ranking.Ranker: 95% done.
+12/05/06 04:15:25 INFO ranking.Ranker: 100% done.
+12/05/06 04:15:25 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:15:26 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:15:26 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:15:37 INFO ranking.Ranker: 5% done.
+12/05/06 04:15:47 INFO ranking.Ranker: 10% done.
+12/05/06 04:15:58 INFO ranking.Ranker: 15% done.
+12/05/06 04:16:09 INFO ranking.Ranker: 20% done.
+12/05/06 04:16:19 INFO ranking.Ranker: 25% done.
+12/05/06 04:16:32 INFO ranking.Ranker: 30% done.
+12/05/06 04:16:43 INFO ranking.Ranker: 35% done.
+12/05/06 04:16:55 INFO ranking.Ranker: 40% done.
+12/05/06 04:17:07 INFO ranking.Ranker: 45% done.
+12/05/06 04:17:17 INFO ranking.Ranker: 50% done.
+12/05/06 04:17:28 INFO ranking.Ranker: 55% done.
+12/05/06 04:17:40 INFO ranking.Ranker: 60% done.
+12/05/06 04:17:52 INFO ranking.Ranker: 65% done.
+12/05/06 04:18:04 INFO ranking.Ranker: 70% done.
+12/05/06 04:18:15 INFO ranking.Ranker: 75% done.
+12/05/06 04:18:27 INFO ranking.Ranker: 80% done.
+12/05/06 04:18:40 INFO ranking.Ranker: 85% done.
+12/05/06 04:18:51 INFO ranking.Ranker: 90% done.
+12/05/06 04:19:02 INFO ranking.Ranker: 95% done.
+12/05/06 04:19:12 INFO ranking.Ranker: 100% done.
+12/05/06 04:19:12 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:19:13 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:19:13 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:19:15 INFO ranking.Ranker: 5% done.
+12/05/06 04:19:17 INFO ranking.Ranker: 10% done.
+12/05/06 04:19:18 INFO ranking.Ranker: 15% done.
+12/05/06 04:19:20 INFO ranking.Ranker: 20% done.
+12/05/06 04:19:21 INFO ranking.Ranker: 25% done.
+12/05/06 04:19:23 INFO ranking.Ranker: 30% done.
+12/05/06 04:19:24 INFO ranking.Ranker: 35% done.
+12/05/06 04:19:26 INFO ranking.Ranker: 40% done.
+12/05/06 04:19:27 INFO ranking.Ranker: 45% done.
+12/05/06 04:19:29 INFO ranking.Ranker: 50% done.
+12/05/06 04:19:30 INFO ranking.Ranker: 55% done.
+12/05/06 04:19:32 INFO ranking.Ranker: 60% done.
+12/05/06 04:19:33 INFO ranking.Ranker: 65% done.
+12/05/06 04:19:35 INFO ranking.Ranker: 70% done.
+12/05/06 04:19:36 INFO ranking.Ranker: 75% done.
+12/05/06 04:19:37 INFO ranking.Ranker: 80% done.
+12/05/06 04:19:39 INFO ranking.Ranker: 85% done.
+12/05/06 04:19:40 INFO ranking.Ranker: 90% done.
+12/05/06 04:19:42 INFO ranking.Ranker: 95% done.
+12/05/06 04:19:43 INFO ranking.Ranker: 100% done.
+12/05/06 04:19:43 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:19:43 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:19:43 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:19:51 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 4 ---
+12/05/06 04:19:51 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 04:19:51 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:19:58 INFO ranking.Ranker: 5% done.
+12/05/06 04:20:05 INFO ranking.Ranker: 10% done.
+12/05/06 04:20:11 INFO ranking.Ranker: 15% done.
+12/05/06 04:20:19 INFO ranking.Ranker: 20% done.
+12/05/06 04:20:25 INFO ranking.Ranker: 25% done.
+12/05/06 04:20:32 INFO ranking.Ranker: 30% done.
+12/05/06 04:20:38 INFO ranking.Ranker: 35% done.
+12/05/06 04:20:44 INFO ranking.Ranker: 40% done.
+12/05/06 04:20:50 INFO ranking.Ranker: 45% done.
+12/05/06 04:20:57 INFO ranking.Ranker: 50% done.
+12/05/06 04:21:04 INFO ranking.Ranker: 55% done.
+12/05/06 04:21:11 INFO ranking.Ranker: 60% done.
+12/05/06 04:21:18 INFO ranking.Ranker: 65% done.
+12/05/06 04:21:24 INFO ranking.Ranker: 70% done.
+12/05/06 04:21:31 INFO ranking.Ranker: 75% done.
+12/05/06 04:21:38 INFO ranking.Ranker: 80% done.
+12/05/06 04:21:45 INFO ranking.Ranker: 85% done.
+12/05/06 04:21:52 INFO ranking.Ranker: 90% done.
+12/05/06 04:21:59 INFO ranking.Ranker: 95% done.
+12/05/06 04:22:05 INFO ranking.Ranker: 100% done.
+12/05/06 04:22:05 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:22:06 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:22:06 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:22:16 INFO ranking.Ranker: 5% done.
+12/05/06 04:22:27 INFO ranking.Ranker: 10% done.
+12/05/06 04:22:39 INFO ranking.Ranker: 15% done.
+12/05/06 04:22:50 INFO ranking.Ranker: 20% done.
+12/05/06 04:23:01 INFO ranking.Ranker: 25% done.
+12/05/06 04:23:12 INFO ranking.Ranker: 30% done.
+12/05/06 04:23:24 INFO ranking.Ranker: 35% done.
+12/05/06 04:23:34 INFO ranking.Ranker: 40% done.
+12/05/06 04:23:45 INFO ranking.Ranker: 45% done.
+12/05/06 04:23:55 INFO ranking.Ranker: 50% done.
+12/05/06 04:24:06 INFO ranking.Ranker: 55% done.
+12/05/06 04:24:16 INFO ranking.Ranker: 60% done.
+12/05/06 04:24:27 INFO ranking.Ranker: 65% done.
+12/05/06 04:24:38 INFO ranking.Ranker: 70% done.
+12/05/06 04:24:49 INFO ranking.Ranker: 75% done.
+12/05/06 04:25:00 INFO ranking.Ranker: 80% done.
+12/05/06 04:25:10 INFO ranking.Ranker: 85% done.
+12/05/06 04:25:22 INFO ranking.Ranker: 90% done.
+12/05/06 04:25:34 INFO ranking.Ranker: 95% done.
+12/05/06 04:25:44 INFO ranking.Ranker: 100% done.
+12/05/06 04:25:44 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:25:45 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:25:45 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:25:46 INFO ranking.Ranker: 5% done.
+12/05/06 04:25:47 INFO ranking.Ranker: 10% done.
+12/05/06 04:25:49 INFO ranking.Ranker: 15% done.
+12/05/06 04:25:50 INFO ranking.Ranker: 20% done.
+12/05/06 04:25:52 INFO ranking.Ranker: 25% done.
+12/05/06 04:25:53 INFO ranking.Ranker: 30% done.
+12/05/06 04:25:54 INFO ranking.Ranker: 35% done.
+12/05/06 04:25:56 INFO ranking.Ranker: 40% done.
+12/05/06 04:25:57 INFO ranking.Ranker: 45% done.
+12/05/06 04:25:58 INFO ranking.Ranker: 50% done.
+12/05/06 04:25:59 INFO ranking.Ranker: 55% done.
+12/05/06 04:26:01 INFO ranking.Ranker: 60% done.
+12/05/06 04:26:02 INFO ranking.Ranker: 65% done.
+12/05/06 04:26:04 INFO ranking.Ranker: 70% done.
+12/05/06 04:26:05 INFO ranking.Ranker: 75% done.
+12/05/06 04:26:06 INFO ranking.Ranker: 80% done.
+12/05/06 04:26:08 INFO ranking.Ranker: 85% done.
+12/05/06 04:26:09 INFO ranking.Ranker: 90% done.
+12/05/06 04:26:10 INFO ranking.Ranker: 95% done.
+12/05/06 04:26:12 INFO ranking.Ranker: 100% done.
+12/05/06 04:26:12 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:26:12 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:26:12 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:26:20 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 5 ---
+12/05/06 04:26:20 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 04:26:20 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:26:26 INFO ranking.Ranker: 5% done.
+12/05/06 04:26:32 INFO ranking.Ranker: 10% done.
+12/05/06 04:26:38 INFO ranking.Ranker: 15% done.
+12/05/06 04:26:43 INFO ranking.Ranker: 20% done.
+12/05/06 04:26:49 INFO ranking.Ranker: 25% done.
+12/05/06 04:26:55 INFO ranking.Ranker: 30% done.
+12/05/06 04:27:01 INFO ranking.Ranker: 35% done.
+12/05/06 04:27:08 INFO ranking.Ranker: 40% done.
+12/05/06 04:27:14 INFO ranking.Ranker: 45% done.
+12/05/06 04:27:20 INFO ranking.Ranker: 50% done.
+12/05/06 04:27:25 INFO ranking.Ranker: 55% done.
+12/05/06 04:27:31 INFO ranking.Ranker: 60% done.
+12/05/06 04:27:37 INFO ranking.Ranker: 65% done.
+12/05/06 04:27:43 INFO ranking.Ranker: 70% done.
+12/05/06 04:27:50 INFO ranking.Ranker: 75% done.
+12/05/06 04:27:55 INFO ranking.Ranker: 80% done.
+12/05/06 04:28:01 INFO ranking.Ranker: 85% done.
+12/05/06 04:28:07 INFO ranking.Ranker: 90% done.
+12/05/06 04:28:13 INFO ranking.Ranker: 95% done.
+12/05/06 04:28:18 INFO ranking.Ranker: 100% done.
+12/05/06 04:28:18 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:28:19 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:28:19 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:28:29 INFO ranking.Ranker: 5% done.
+12/05/06 04:28:42 INFO ranking.Ranker: 10% done.
+12/05/06 04:28:52 INFO ranking.Ranker: 15% done.
+12/05/06 04:29:03 INFO ranking.Ranker: 20% done.
+12/05/06 04:29:13 INFO ranking.Ranker: 25% done.
+12/05/06 04:29:23 INFO ranking.Ranker: 30% done.
+12/05/06 04:29:32 INFO ranking.Ranker: 35% done.
+12/05/06 04:29:42 INFO ranking.Ranker: 40% done.
+12/05/06 04:29:53 INFO ranking.Ranker: 45% done.
+12/05/06 04:30:03 INFO ranking.Ranker: 50% done.
+12/05/06 04:30:14 INFO ranking.Ranker: 55% done.
+12/05/06 04:30:24 INFO ranking.Ranker: 60% done.
+12/05/06 04:30:34 INFO ranking.Ranker: 65% done.
+12/05/06 04:30:45 INFO ranking.Ranker: 70% done.
+12/05/06 04:30:55 INFO ranking.Ranker: 75% done.
+12/05/06 04:31:05 INFO ranking.Ranker: 80% done.
+12/05/06 04:31:16 INFO ranking.Ranker: 85% done.
+12/05/06 04:31:25 INFO ranking.Ranker: 90% done.
+12/05/06 04:31:35 INFO ranking.Ranker: 95% done.
+12/05/06 04:31:47 INFO ranking.Ranker: 100% done.
+12/05/06 04:31:47 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:31:48 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:31:48 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:31:49 INFO ranking.Ranker: 5% done.
+12/05/06 04:31:51 INFO ranking.Ranker: 10% done.
+12/05/06 04:31:52 INFO ranking.Ranker: 15% done.
+12/05/06 04:31:53 INFO ranking.Ranker: 20% done.
+12/05/06 04:31:54 INFO ranking.Ranker: 25% done.
+12/05/06 04:31:56 INFO ranking.Ranker: 30% done.
+12/05/06 04:31:57 INFO ranking.Ranker: 35% done.
+12/05/06 04:31:58 INFO ranking.Ranker: 40% done.
+12/05/06 04:32:00 INFO ranking.Ranker: 45% done.
+12/05/06 04:32:01 INFO ranking.Ranker: 50% done.
+12/05/06 04:32:03 INFO ranking.Ranker: 55% done.
+12/05/06 04:32:04 INFO ranking.Ranker: 60% done.
+12/05/06 04:32:05 INFO ranking.Ranker: 65% done.
+12/05/06 04:32:06 INFO ranking.Ranker: 70% done.
+12/05/06 04:32:08 INFO ranking.Ranker: 75% done.
+12/05/06 04:32:09 INFO ranking.Ranker: 80% done.
+12/05/06 04:32:11 INFO ranking.Ranker: 85% done.
+12/05/06 04:32:12 INFO ranking.Ranker: 90% done.
+12/05/06 04:32:13 INFO ranking.Ranker: 95% done.
+12/05/06 04:32:15 INFO ranking.Ranker: 100% done.
+12/05/06 04:32:15 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:32:15 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:32:15 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:32:23 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 6 ---
+12/05/06 04:32:23 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 04:32:23 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:32:28 INFO ranking.Ranker: 5% done.
+12/05/06 04:32:33 INFO ranking.Ranker: 10% done.
+12/05/06 04:32:39 INFO ranking.Ranker: 15% done.
+12/05/06 04:32:43 INFO ranking.Ranker: 20% done.
+12/05/06 04:32:48 INFO ranking.Ranker: 25% done.
+12/05/06 04:32:52 INFO ranking.Ranker: 30% done.
+12/05/06 04:32:57 INFO ranking.Ranker: 35% done.
+12/05/06 04:33:01 INFO ranking.Ranker: 40% done.
+12/05/06 04:33:06 INFO ranking.Ranker: 45% done.
+12/05/06 04:33:11 INFO ranking.Ranker: 50% done.
+12/05/06 04:33:15 INFO ranking.Ranker: 55% done.
+12/05/06 04:33:21 INFO ranking.Ranker: 60% done.
+12/05/06 04:33:26 INFO ranking.Ranker: 65% done.
+12/05/06 04:33:30 INFO ranking.Ranker: 70% done.
+12/05/06 04:33:35 INFO ranking.Ranker: 75% done.
+12/05/06 04:33:40 INFO ranking.Ranker: 80% done.
+12/05/06 04:33:44 INFO ranking.Ranker: 85% done.
+12/05/06 04:33:50 INFO ranking.Ranker: 90% done.
+12/05/06 04:33:55 INFO ranking.Ranker: 95% done.
+12/05/06 04:34:00 INFO ranking.Ranker: 100% done.
+12/05/06 04:34:00 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:34:00 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:34:00 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:34:09 INFO ranking.Ranker: 5% done.
+12/05/06 04:34:20 INFO ranking.Ranker: 10% done.
+12/05/06 04:34:30 INFO ranking.Ranker: 15% done.
+12/05/06 04:34:38 INFO ranking.Ranker: 20% done.
+12/05/06 04:34:47 INFO ranking.Ranker: 25% done.
+12/05/06 04:34:56 INFO ranking.Ranker: 30% done.
+12/05/06 04:35:06 INFO ranking.Ranker: 35% done.
+12/05/06 04:35:14 INFO ranking.Ranker: 40% done.
+12/05/06 04:35:23 INFO ranking.Ranker: 45% done.
+12/05/06 04:35:32 INFO ranking.Ranker: 50% done.
+12/05/06 04:35:42 INFO ranking.Ranker: 55% done.
+12/05/06 04:35:52 INFO ranking.Ranker: 60% done.
+12/05/06 04:36:04 INFO ranking.Ranker: 65% done.
+12/05/06 04:36:17 INFO ranking.Ranker: 70% done.
+12/05/06 04:36:38 INFO ranking.Ranker: 75% done.
+12/05/06 04:36:57 INFO ranking.Ranker: 80% done.
+12/05/06 04:37:16 INFO ranking.Ranker: 85% done.
+12/05/06 04:37:34 INFO ranking.Ranker: 90% done.
+12/05/06 04:37:50 INFO ranking.Ranker: 95% done.
+12/05/06 04:38:02 INFO ranking.Ranker: 100% done.
+12/05/06 04:38:02 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:38:03 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:38:03 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:38:04 INFO ranking.Ranker: 5% done.
+12/05/06 04:38:06 INFO ranking.Ranker: 10% done.
+12/05/06 04:38:07 INFO ranking.Ranker: 15% done.
+12/05/06 04:38:09 INFO ranking.Ranker: 20% done.
+12/05/06 04:38:11 INFO ranking.Ranker: 25% done.
+12/05/06 04:38:12 INFO ranking.Ranker: 30% done.
+12/05/06 04:38:20 INFO ranking.Ranker: 35% done.
+12/05/06 04:38:21 INFO ranking.Ranker: 40% done.
+12/05/06 04:38:23 INFO ranking.Ranker: 45% done.
+12/05/06 04:38:25 INFO ranking.Ranker: 50% done.
+12/05/06 04:38:27 INFO ranking.Ranker: 55% done.
+12/05/06 04:38:29 INFO ranking.Ranker: 60% done.
+12/05/06 04:38:30 INFO ranking.Ranker: 65% done.
+12/05/06 04:38:32 INFO ranking.Ranker: 70% done.
+12/05/06 04:38:34 INFO ranking.Ranker: 75% done.
+12/05/06 04:38:36 INFO ranking.Ranker: 80% done.
+12/05/06 04:38:38 INFO ranking.Ranker: 85% done.
+12/05/06 04:38:39 INFO ranking.Ranker: 90% done.
+12/05/06 04:38:42 INFO ranking.Ranker: 95% done.
+12/05/06 04:38:44 INFO ranking.Ranker: 100% done.
+12/05/06 04:38:44 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:38:45 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:38:45 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:38:57 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 7 ---
+12/05/06 04:38:57 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 04:38:57 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:39:05 INFO ranking.Ranker: 5% done.
+12/05/06 04:39:12 INFO ranking.Ranker: 10% done.
+12/05/06 04:39:19 INFO ranking.Ranker: 15% done.
+12/05/06 04:39:28 INFO ranking.Ranker: 20% done.
+12/05/06 04:39:36 INFO ranking.Ranker: 25% done.
+12/05/06 04:39:44 INFO ranking.Ranker: 30% done.
+12/05/06 04:39:49 INFO ranking.Ranker: 35% done.
+12/05/06 04:39:54 INFO ranking.Ranker: 40% done.
+12/05/06 04:40:00 INFO ranking.Ranker: 45% done.
+12/05/06 04:40:04 INFO ranking.Ranker: 50% done.
+12/05/06 04:40:08 INFO ranking.Ranker: 55% done.
+12/05/06 04:40:12 INFO ranking.Ranker: 60% done.
+12/05/06 04:40:16 INFO ranking.Ranker: 65% done.
+12/05/06 04:40:19 INFO ranking.Ranker: 70% done.
+12/05/06 04:40:23 INFO ranking.Ranker: 75% done.
+12/05/06 04:40:27 INFO ranking.Ranker: 80% done.
+12/05/06 04:40:31 INFO ranking.Ranker: 85% done.
+12/05/06 04:40:35 INFO ranking.Ranker: 90% done.
+12/05/06 04:40:38 INFO ranking.Ranker: 95% done.
+12/05/06 04:40:42 INFO ranking.Ranker: 100% done.
+12/05/06 04:40:42 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:40:42 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:40:42 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:40:51 INFO ranking.Ranker: 5% done.
+12/05/06 04:41:00 INFO ranking.Ranker: 10% done.
+12/05/06 04:41:08 INFO ranking.Ranker: 15% done.
+12/05/06 04:41:16 INFO ranking.Ranker: 20% done.
+12/05/06 04:41:24 INFO ranking.Ranker: 25% done.
+12/05/06 04:41:34 INFO ranking.Ranker: 30% done.
+12/05/06 04:41:43 INFO ranking.Ranker: 35% done.
+12/05/06 04:41:51 INFO ranking.Ranker: 40% done.
+12/05/06 04:42:00 INFO ranking.Ranker: 45% done.
+12/05/06 04:42:10 INFO ranking.Ranker: 50% done.
+12/05/06 04:42:19 INFO ranking.Ranker: 55% done.
+12/05/06 04:42:28 INFO ranking.Ranker: 60% done.
+12/05/06 04:42:37 INFO ranking.Ranker: 65% done.
+12/05/06 04:42:46 INFO ranking.Ranker: 70% done.
+12/05/06 04:42:56 INFO ranking.Ranker: 75% done.
+12/05/06 04:43:06 INFO ranking.Ranker: 80% done.
+12/05/06 04:43:14 INFO ranking.Ranker: 85% done.
+12/05/06 04:43:23 INFO ranking.Ranker: 90% done.
+12/05/06 04:43:32 INFO ranking.Ranker: 95% done.
+12/05/06 04:43:40 INFO ranking.Ranker: 100% done.
+12/05/06 04:43:40 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:43:41 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:43:41 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:43:43 INFO ranking.Ranker: 5% done.
+12/05/06 04:43:44 INFO ranking.Ranker: 10% done.
+12/05/06 04:43:46 INFO ranking.Ranker: 15% done.
+12/05/06 04:43:48 INFO ranking.Ranker: 20% done.
+12/05/06 04:43:49 INFO ranking.Ranker: 25% done.
+12/05/06 04:43:51 INFO ranking.Ranker: 30% done.
+12/05/06 04:43:52 INFO ranking.Ranker: 35% done.
+12/05/06 04:43:53 INFO ranking.Ranker: 40% done.
+12/05/06 04:43:55 INFO ranking.Ranker: 45% done.
+12/05/06 04:43:56 INFO ranking.Ranker: 50% done.
+12/05/06 04:43:57 INFO ranking.Ranker: 55% done.
+12/05/06 04:43:58 INFO ranking.Ranker: 60% done.
+12/05/06 04:44:00 INFO ranking.Ranker: 65% done.
+12/05/06 04:44:01 INFO ranking.Ranker: 70% done.
+12/05/06 04:44:02 INFO ranking.Ranker: 75% done.
+12/05/06 04:44:03 INFO ranking.Ranker: 80% done.
+12/05/06 04:44:05 INFO ranking.Ranker: 85% done.
+12/05/06 04:44:06 INFO ranking.Ranker: 90% done.
+12/05/06 04:44:07 INFO ranking.Ranker: 95% done.
+12/05/06 04:44:09 INFO ranking.Ranker: 100% done.
+12/05/06 04:44:09 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:44:09 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:44:09 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:44:16 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 8 ---
+12/05/06 04:44:16 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 04:44:16 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:44:20 INFO ranking.Ranker: 5% done.
+12/05/06 04:44:24 INFO ranking.Ranker: 10% done.
+12/05/06 04:44:27 INFO ranking.Ranker: 15% done.
+12/05/06 04:44:31 INFO ranking.Ranker: 20% done.
+12/05/06 04:44:34 INFO ranking.Ranker: 25% done.
+12/05/06 04:44:37 INFO ranking.Ranker: 30% done.
+12/05/06 04:44:41 INFO ranking.Ranker: 35% done.
+12/05/06 04:44:45 INFO ranking.Ranker: 40% done.
+12/05/06 04:44:48 INFO ranking.Ranker: 45% done.
+12/05/06 04:44:52 INFO ranking.Ranker: 50% done.
+12/05/06 04:44:55 INFO ranking.Ranker: 55% done.
+12/05/06 04:44:59 INFO ranking.Ranker: 60% done.
+12/05/06 04:45:02 INFO ranking.Ranker: 65% done.
+12/05/06 04:45:06 INFO ranking.Ranker: 70% done.
+12/05/06 04:45:09 INFO ranking.Ranker: 75% done.
+12/05/06 04:45:13 INFO ranking.Ranker: 80% done.
+12/05/06 04:45:17 INFO ranking.Ranker: 85% done.
+12/05/06 04:45:20 INFO ranking.Ranker: 90% done.
+12/05/06 04:45:24 INFO ranking.Ranker: 95% done.
+12/05/06 04:45:27 INFO ranking.Ranker: 100% done.
+12/05/06 04:45:27 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:45:28 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:45:28 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:45:37 INFO ranking.Ranker: 5% done.
+12/05/06 04:45:46 INFO ranking.Ranker: 10% done.
+12/05/06 04:45:55 INFO ranking.Ranker: 15% done.
+12/05/06 04:46:05 INFO ranking.Ranker: 20% done.
+12/05/06 04:46:14 INFO ranking.Ranker: 25% done.
+12/05/06 04:46:22 INFO ranking.Ranker: 30% done.
+12/05/06 04:46:32 INFO ranking.Ranker: 35% done.
+12/05/06 04:46:40 INFO ranking.Ranker: 40% done.
+12/05/06 04:46:51 INFO ranking.Ranker: 45% done.
+12/05/06 04:47:00 INFO ranking.Ranker: 50% done.
+12/05/06 04:47:08 INFO ranking.Ranker: 55% done.
+12/05/06 04:47:18 INFO ranking.Ranker: 60% done.
+12/05/06 04:47:27 INFO ranking.Ranker: 65% done.
+12/05/06 04:47:36 INFO ranking.Ranker: 70% done.
+12/05/06 04:47:45 INFO ranking.Ranker: 75% done.
+12/05/06 04:47:53 INFO ranking.Ranker: 80% done.
+12/05/06 04:48:02 INFO ranking.Ranker: 85% done.
+12/05/06 04:48:11 INFO ranking.Ranker: 90% done.
+12/05/06 04:48:22 INFO ranking.Ranker: 95% done.
+12/05/06 04:48:31 INFO ranking.Ranker: 100% done.
+12/05/06 04:48:31 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:48:32 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:48:32 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:48:34 INFO ranking.Ranker: 5% done.
+12/05/06 04:48:35 INFO ranking.Ranker: 10% done.
+12/05/06 04:48:36 INFO ranking.Ranker: 15% done.
+12/05/06 04:48:38 INFO ranking.Ranker: 20% done.
+12/05/06 04:48:39 INFO ranking.Ranker: 25% done.
+12/05/06 04:48:40 INFO ranking.Ranker: 30% done.
+12/05/06 04:48:41 INFO ranking.Ranker: 35% done.
+12/05/06 04:48:42 INFO ranking.Ranker: 40% done.
+12/05/06 04:48:43 INFO ranking.Ranker: 45% done.
+12/05/06 04:48:45 INFO ranking.Ranker: 50% done.
+12/05/06 04:48:46 INFO ranking.Ranker: 55% done.
+12/05/06 04:48:47 INFO ranking.Ranker: 60% done.
+12/05/06 04:48:49 INFO ranking.Ranker: 65% done.
+12/05/06 04:48:50 INFO ranking.Ranker: 70% done.
+12/05/06 04:48:51 INFO ranking.Ranker: 75% done.
+12/05/06 04:48:52 INFO ranking.Ranker: 80% done.
+12/05/06 04:48:54 INFO ranking.Ranker: 85% done.
+12/05/06 04:48:55 INFO ranking.Ranker: 90% done.
+12/05/06 04:48:56 INFO ranking.Ranker: 95% done.
+12/05/06 04:48:58 INFO ranking.Ranker: 100% done.
+12/05/06 04:48:58 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:48:58 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:48:58 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:49:06 INFO lexinduct.FreqBinInductor:  --- Ranking candidates from bin 9 ---
+12/05/06 04:49:06 INFO lexinduct.FreqBinInductor:  - Ranking candidates using time...
+12/05/06 04:49:06 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:49:09 INFO ranking.Ranker: 5% done.
+12/05/06 04:49:12 INFO ranking.Ranker: 10% done.
+12/05/06 04:49:15 INFO ranking.Ranker: 15% done.
+12/05/06 04:49:18 INFO ranking.Ranker: 20% done.
+12/05/06 04:49:21 INFO ranking.Ranker: 25% done.
+12/05/06 04:49:24 INFO ranking.Ranker: 30% done.
+12/05/06 04:49:28 INFO ranking.Ranker: 35% done.
+12/05/06 04:49:31 INFO ranking.Ranker: 40% done.
+12/05/06 04:49:34 INFO ranking.Ranker: 45% done.
+12/05/06 04:49:37 INFO ranking.Ranker: 50% done.
+12/05/06 04:49:40 INFO ranking.Ranker: 55% done.
+12/05/06 04:49:44 INFO ranking.Ranker: 60% done.
+12/05/06 04:49:48 INFO ranking.Ranker: 65% done.
+12/05/06 04:49:51 INFO ranking.Ranker: 70% done.
+12/05/06 04:49:55 INFO ranking.Ranker: 75% done.
+12/05/06 04:49:58 INFO ranking.Ranker: 80% done.
+12/05/06 04:50:01 INFO ranking.Ranker: 85% done.
+12/05/06 04:50:04 INFO ranking.Ranker: 90% done.
+12/05/06 04:50:07 INFO ranking.Ranker: 95% done.
+12/05/06 04:50:11 INFO ranking.Ranker: 100% done.
+12/05/06 04:50:11 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:50:12 INFO lexinduct.FreqBinInductor: Ranking candidates using context...
+12/05/06 04:50:12 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:50:20 INFO ranking.Ranker: 5% done.
+12/05/06 04:50:29 INFO ranking.Ranker: 10% done.
+12/05/06 04:50:39 INFO ranking.Ranker: 15% done.
+12/05/06 04:50:48 INFO ranking.Ranker: 20% done.
+12/05/06 04:50:57 INFO ranking.Ranker: 25% done.
+12/05/06 04:51:06 INFO ranking.Ranker: 30% done.
+12/05/06 04:51:15 INFO ranking.Ranker: 35% done.
+12/05/06 04:51:24 INFO ranking.Ranker: 40% done.
+12/05/06 04:51:33 INFO ranking.Ranker: 45% done.
+12/05/06 04:51:42 INFO ranking.Ranker: 50% done.
+12/05/06 04:51:51 INFO ranking.Ranker: 55% done.
+12/05/06 04:51:59 INFO ranking.Ranker: 60% done.
+12/05/06 04:52:08 INFO ranking.Ranker: 65% done.
+12/05/06 04:52:17 INFO ranking.Ranker: 70% done.
+12/05/06 04:52:26 INFO ranking.Ranker: 75% done.
+12/05/06 04:52:34 INFO ranking.Ranker: 80% done.
+12/05/06 04:52:43 INFO ranking.Ranker: 85% done.
+12/05/06 04:52:52 INFO ranking.Ranker: 90% done.
+12/05/06 04:53:02 INFO ranking.Ranker: 95% done.
+12/05/06 04:53:11 INFO ranking.Ranker: 100% done.
+12/05/06 04:53:11 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:53:12 INFO lexinduct.FreqBinInductor: Ranking candidates using edit distance...
+12/05/06 04:53:12 INFO ranking.Ranker: Worker 0 started collecting rankings.
+12/05/06 04:53:13 INFO ranking.Ranker: 5% done.
+12/05/06 04:53:14 INFO ranking.Ranker: 10% done.
+12/05/06 04:53:16 INFO ranking.Ranker: 15% done.
+12/05/06 04:53:17 INFO ranking.Ranker: 20% done.
+12/05/06 04:53:18 INFO ranking.Ranker: 25% done.
+12/05/06 04:53:19 INFO ranking.Ranker: 30% done.
+12/05/06 04:53:20 INFO ranking.Ranker: 35% done.
+12/05/06 04:53:22 INFO ranking.Ranker: 40% done.
+12/05/06 04:53:23 INFO ranking.Ranker: 45% done.
+12/05/06 04:53:24 INFO ranking.Ranker: 50% done.
+12/05/06 04:53:25 INFO ranking.Ranker: 55% done.
+12/05/06 04:53:26 INFO ranking.Ranker: 60% done.
+12/05/06 04:53:28 INFO ranking.Ranker: 65% done.
+12/05/06 04:53:29 INFO ranking.Ranker: 70% done.
+12/05/06 04:53:30 INFO ranking.Ranker: 75% done.
+12/05/06 04:53:31 INFO ranking.Ranker: 80% done.
+12/05/06 04:53:33 INFO ranking.Ranker: 85% done.
+12/05/06 04:53:34 INFO ranking.Ranker: 90% done.
+12/05/06 04:53:35 INFO ranking.Ranker: 95% done.
+12/05/06 04:53:36 INFO ranking.Ranker: 100% done.
+12/05/06 04:53:36 INFO ranking.Ranker: Worker 0 finished.
+12/05/06 04:53:36 INFO lexinduct.FreqBinInductor: Aggregating (MRR) all rankings...
+12/05/06 04:53:36 INFO ranking.MRRAggregator: Aggregating 3 rankings.
+12/05/06 04:54:04 INFO lexinduct.FreqBinInductor: --- Done ---
