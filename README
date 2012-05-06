@@ -35,4 +35,8 @@ Score and add to a phrase table for MT
 (3) Vs. Only monolingual dictionary and OOV found translations score monolingually
 
 
+C. Documentation
 
+1. Clean up my notes on running pipelines for producing the above, and include here
+2. Make latex tables with data information (dictionary sizes, monolingual crawl data sizes, etc.) in "Babel Final Report Results" google spreadsheet.
+3. Write some prose about experimental results
