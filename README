@@ -1,3 +1,5 @@
+Easy processing pipelines done up to the to-do line below. Note that not all output exists yet, but the jobs are running for all languages. All done for "az" example language.
+
 A. byFreqGraphs:
 
 Evaluation of lexicon induction framework for 24 languages (intersection of MTurk annotated Wikipedia dictionaries, with >100 translated words,  and our monolingual crawls)
@@ -6,16 +8,24 @@ By-language directory for each:
 
 1. lang/lexinductnew.pdf : plot of frequency vs. accuracy in top-1, top-10, and top-100 outputs. If any MTurk worker has annotated a target word as a translation of a source language word, then it is considered correct. Translations are ranked using the mean reciprocal rank of the rankings given by our (1) contextual, (2) temporal, and (3) edit distance monolingual signals. Additional plots for each signal individually can be easily added. The 3000 most frequent words (wrt monolingual crawls) in our test dictionary were divided into 15 bins, by frequency. The average frequency of the words in each bin is plotted vs. the average translation accuracy of the words in each bin. If fewer than 3000 source language dictionary words appeared in the monolingual data, then the entire intersection of the two was used. The average corpus frequency (x-axis on the graphs) varies because (1) the test set size varied, as described, and (2) the size of the monolingual corpora varies.
 
-2. For each of three runs (averaged for the graph above): on clsp grid: /home/anni/lexinducresults/translationdumps/lang/runx/{aggmrr,context,edit,time}.scored contains a dump of the top 500 translations for all source language words translated in (1). Correct translations are starred. [Not included in github repo because filesizes are very large.]
+2. By-Frequency translation dumps: For each of three runs (which are averaged for the graph above): on clsp grid: /home/anni/lexinducresults/translationdumps/lang/runx/{aggmrr,context,edit,time}.scored contains a dump of the top 500 translations for all source language words translated in (1). Correct translations are starred. [Not included in github repo because filesizes are very large.]
 
-----
+3. Summary statistic (accuracy in top k using one or aggregate of three monolingual signals) for *all* source language words in the MTurk dictionaries (regardless of frequency) in lang/summarystats
+Note: dumps of translations for all source words available on a01:
+/mnt/data/anni/Experiments/TranslateOOVs/$lang$/dictall/output
+Correct translations are starred.
 
-3. To-Do: Summary statistic (accuracy in top 1, top 10, top 100) for *all* source language words in the MTurk dictionaries: instead of binning by frequency, induce translations for all (can also get translation dumps for this run, instead of for freq-experiments subset as in (2)).
 
 
-B. MachineTranslation (all to-do)
+B. MachineTranslation
 
-1. Top-k translations for all OOV words wrt 5 Wikipedia articles (same method as above). Score and add to a phrase table for MT
+1a. Top-k translations for all OOV words wrt 5 Wikipedia articles (same method as above), in /mnt/data/anni/Experiments/TranslateOOVs/$lang$/dictplusoov/output
+
+----TO-DO line----
+
+1b.
+Script to extract top-k translations from (1a) output above
+Score and add to a phrase table for MT
 
 2. End-to-End translations for each language (w/ and w/o OOVs if want, not necessary, definitely do with)
 
