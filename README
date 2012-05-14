@@ -20,12 +20,9 @@ Correct translations are starred.
 B. MachineTranslation
 
 1a. Top-k translations for all OOV words wrt 5 Wikipedia articles (same method as above), in /mnt/data/anni/Experiments/TranslateOOVs/$lang$/dictplusoov/output
+1b. Script to extract top-50 translations for OOVS only, from (1a) output above, output in /mnt/data/anni/Experiments/TranslateOOVs/$lang$/oovs.translated, ready to be added to scoreless phrase table (below)
 
 ----TO-DO line----
-
-1b.
-Script to extract top-k translations from (1a) output above
-Score and add to a phrase table for MT
 
 2. End-to-End translations for each language (w/ and w/o OOVs if want, not necessary, definitely do with)
 
