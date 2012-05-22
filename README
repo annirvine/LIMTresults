@@ -37,3 +37,10 @@ C. Documentation
 1. Clean up my notes on running pipelines for producing the above, and include here
 2. Make latex tables with data information (dictionary sizes, monolingual crawl data sizes, etc.) in "Babel Final Report Results" google spreadsheet.
 3. Write some prose about experimental results
+
+----
+
+Additional Experiments:
+1. Tune weights on contextual, temporal, orthographic, and wikipedia topic features and combine optimally, instead of just MRR. Training data - part of gold standard dictionary and scored features and correct and incorrect translation pairs
+2. Vary amount of monolingual text, e.g. Farsi or Spanish, used to score dictionary translations.
+3. Add transliteration (buckwalter or full) for non-roman script languages
