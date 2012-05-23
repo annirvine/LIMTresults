@@ -45,3 +45,9 @@ Additional Experiments:
 1. Tune weights on contextual, temporal, orthographic, and wikipedia topic features and combine optimally, instead of just MRR. Training data - part of gold standard dictionary and scored features and correct and incorrect translation pairs
 2. Vary amount of monolingual text, e.g. Farsi or Spanish, used to score dictionary translations.
 3. Add transliteration (buckwalter or full) for non-roman script languages
+
+
+
+--Score stems of phrase table entries
+--Training side of Indian language corpus LMs from Matt
+
