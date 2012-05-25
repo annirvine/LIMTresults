@@ -24,13 +24,16 @@ B. MachineTranslation
 
 2. End-to-End translations for each language (w/ OOVs translated using above lex induc framework)
 
+3. Experiments with an MT test set: Wikipedia Indian languages (Spanish + Urdu if have time, but that monolingual data is so big)
+(1) MT learning curve: From 100 -> all of training data available, doubling amount of training data at each point on the curve. 
+(2) Same as above, plus monolingual scores.
+(3) Pure monolingual system; monolingual scores on phrase tables including:
+  - Using dictionaries only
+
 ----TO-DO line----
 
-
-3. Experiments with an MT test set: Spanish and Urdu (+ other Wikipedia Indian languages)
-(1) From 0-> (hundred/thousand sentence increments bilingual sentences) until reach performance of dictionary+OOV-translations+monolingual scoring. Also supplement bilingual data with the same dictionary as above, appended to (varying length) parallel corpus, scored bilingually. 
-(2) Same as above, plus monolingual scores
-(3) Vs. Only monolingual dictionary and OOV found translations score monolingually
+  - Using dictionaries + induced oov translations from (a) crawls, (b) wikipedia
+(4) Full training data from (1), plus monolingual scores from (2), plus dictionaries and oov translations from (3) supplemented to training data. Expected to be best performing system. Could supplment dictionary and monolingual scores to varying amounts of training data, if time.
 
 
 C. Documentation
@@ -45,9 +48,6 @@ Additional Experiments:
 1. Tune weights on contextual, temporal, orthographic, and wikipedia topic features and combine optimally, instead of just MRR. Training data - part of gold standard dictionary and scored features and correct and incorrect translation pairs
 2. Vary amount of monolingual text, e.g. Farsi or Spanish, used to score dictionary translations.
 3. Add transliteration (buckwalter or full) for non-roman script languages
-
-
-
---Score stems of phrase table entries
---Training side of Indian language corpus LMs from Matt
+4. Score stems of phrase table entries
+5. Training side of Indian language corpus LMs from Matt
 
