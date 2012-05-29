@@ -1,0 +1,45 @@
+This is BibTeX, Version 0.99c (TeX Live 2009)
+The top-level auxiliary file: limt.aux
+The style file: naaclhlt2012.bst
+Database file #1: limt.bib
+You've used 3 entries,
+            2490 wiz_defined-function locations,
+            803 strings with 13760 characters,
+and the built_in function-call counts, 1610 in all, are:
+= -- 152
+> -- 98
+< -- 1
++ -- 36
+- -- 36
+* -- 125
+:= -- 271
+add.period$ -- 13
+call.type$ -- 3
+change.case$ -- 30
+chr.to.int$ -- 3
+cite$ -- 3
+duplicate$ -- 63
+empty$ -- 108
+format.name$ -- 39
+if$ -- 330
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 3
+newline$ -- 21
+num.names$ -- 9
+pop$ -- 39
+preamble$ -- 1
+purify$ -- 33
+quote$ -- 0
+skip$ -- 43
+stack$ -- 0
+substring$ -- 47
+swap$ -- 17
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 24
+warning$ -- 0
+while$ -- 9
+width$ -- 6
+write$ -- 45
