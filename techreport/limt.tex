@@ -25,9 +25,9 @@
 \section{Introduction}
 This technical report describes three sets of experiments which are related to low resource machine translation. The first set evaluates a bilingual lexicon induction technique and the second two supplement a phrase-based MT system with scores and translations based on bilingual lexicon induction.
 
-We first evaluate the performance of a Rapp-style \cite{Rapp:1995} bilingual lexicon induction framework. We use monolingual web crawl and wikipedia data to rank candidate translations for a given source language word. We perform experiments identifying English translations for words in {\it 23} source languages. We evaluate our results against dictionaries compiled using Mechanical Turk. 
+We first evaluate the performance of a Rapp-style \cite{Rapp1999} bilingual lexicon induction framework. We use monolingual web crawl and wikipedia data to rank candidate translations for a given source language word. We perform experiments identifying English translations for words in {\it 23} source languages. We evaluate our results against dictionaries compiled using Mechanical Turk. 
 
-We then supplement a phase-based MT system \cite{moses} with the scores and translations that are the output of our bilingual lexicon induction framework. We use our assumed dictionaries, scores based on monolingual data, and induced translations to translate the same five Wikipedia pages for each of our 24 languages of interest. Because clean machine translation test sets do not exist for every language on our list, we do a qualitative analysis of the outputs.
+We then supplement a phase-based MT system \cite{Moses} with the scores and translations that are the output of our bilingual lexicon induction framework. We use our assumed dictionaries, scores based on monolingual data, and induced translations to translate the same five Wikipedia pages for each of our 24 languages of interest. Because clean machine translation test sets do not exist for every language on our list, we do a qualitative analysis of the outputs.
 
 In our third set of experiments, we evaluate our techniques in the standard way, using an MT test set and measuring performance with the BLEU metric. In these experiments, we vary the amount of training data that we use to train the model. We also compare systems based only on parallel sentences with those which also access dictionaries and induced translations for OOV unigrams.
 
@@ -481,7 +481,7 @@ Indonesian & {barack feared obama ii ( ; ) is american president union which cur
 
 \section{Experiments 3: Monolingually-informed machine translation}
 
-In the third set of experiments, we use the same techniques described above to translate source language documents for which we do have sentence-aligned English translations and, thus, are able to automatically score the output with the standard BLEU metric. In particular, we evaluate our methods on the Bengali, Tamil, and Hindi corpora released by \newcite{indianlangs}.
+In the third set of experiments, we use the same techniques described above to translate source language documents for which we do have sentence-aligned English translations and, thus, are able to automatically score the output with the standard BLEU metric. In particular, we evaluate our methods on the Bengali, Tamil, and Hindi corpora released by \newcite{post-callisonburch-osborne:2012:WMT}.
 
 For each language, we perform end-to-end machine translation on the released test sets under the following conditions. In all cases we use a standard Moses phrase-based MT (PBMT) setup and vary only the source(s) of the phrase pairs contained in the phrase table and the set of features which are defined for each phrase pair.
 \begin{enumerate}
@@ -490,11 +490,11 @@ For each language, we perform end-to-end machine translation on the released tes
 \item{Phrase table composed of dictionaries and induced translations for OOVs, full set of monolingual features.}
 \item{Phrase pairs extracted from bitext supplemented with dictionaries and induced translations for OOVs, full bilingually and monolingually estimated feature set.}
 \end{enumerate}
-We use the development set for each language and MERT to tune our feature weights. We also compare our experimental results with those given in \newcite{indianlangs}, which compares Hiero and SAMT based grammars but does not experiment with a syntax-free phrasal grammar. 
+We use the development set for each language and MERT to tune our feature weights. We also compare our experimental results with those given in \newcite{post-callisonburch-osborne:2012:WMT}, which compares Hiero and SAMT based grammars but does not experiment with a syntax-free phrasal grammar. 
 
-It should be noted that \newcite{indianlangs} uses a language model built from the target (English) side of the training data, rather than one built from a larger English corpus, such as the gigaword corpus. That work presents a boost of over a BLEU point when the smaller training-text based LM is used instead of a larger LM. We plan to experiment with the same smaller LM in the near future. It is also important to point out that the training data includes three or four translations for each unique source language sentence, each of which was collected from a different MTurk worker. So, the x-axes in Figures \ref{fig:bntrans} and \ref{fig:tatrans}, the number of training data sentences, refer to the total number of translation pairs, including duplicate source language sentences. 
+It should be noted that \newcite{post-callisonburch-osborne:2012:WMT} uses a language model built from the target (English) side of the training data, rather than one built from a larger English corpus, such as the gigaword corpus. That work presents a boost of over a BLEU point when the smaller training-text based LM is used instead of a larger LM. We plan to experiment with the same smaller LM in the near future. It is also important to point out that the training data includes three or four translations for each unique source language sentence, each of which was collected from a different MTurk worker. So, the x-axes in Figures \ref{fig:bntrans} and \ref{fig:tatrans}, the number of training data sentences, refer to the total number of translation pairs, including duplicate source language sentences. 
 
-The results given in Figure \ref{fig:bntrans} are very encouraging. Our setup which uses all of the available parallel training data plus our dictionaries and induced translations for OOV words and both bilingually and monolingually estimated features (red line) outperforms all other setups, including the Heiro and SAMT-based experiments presented in \newcite{indianlangs}. Furthermore, supplementing the standard PBMT setup with monolingual features (blue line vs. green line) results in a consistent performance gain, across varying amounts of training data. The final thing to note is that using only our given and induced bilingual dictionaries and monolingual feature set to translate is equivalent to translating based on about $6,400$ training parallel sentences if the monolingual feature set is used (blue line) and about $8,000$ if the monolingual feature set isn't used (green line).
+The results given in Figure \ref{fig:bntrans} are very encouraging. Our setup which uses all of the available parallel training data plus our dictionaries and induced translations for OOV words and both bilingually and monolingually estimated features (red line) outperforms all other setups, including the Heiro and SAMT-based experiments presented in \newcite{post-callisonburch-osborne:2012:WMT}. Furthermore, supplementing the standard PBMT setup with monolingual features (blue line vs. green line) results in a consistent performance gain, across varying amounts of training data. The final thing to note is that using only our given and induced bilingual dictionaries and monolingual feature set to translate is equivalent to translating based on about $6,400$ training parallel sentences if the monolingual feature set is used (blue line) and about $8,000$ if the monolingual feature set isn't used (green line).
 
 \begin{figure}
 \vskip 0.0in
@@ -507,7 +507,7 @@ The results given in Figure \ref{fig:bntrans} are very encouraging. Our setup wh
 \end{center}
 \end{figure}
 
-Unfortunately, these encouraging results aren't consistent across our Tamil and Hindi experiments. Figure \ref{fig:tatrans} shows the Tamil to English results. Here, both the Hiero and SAMT-based experiments presented in \newcite{indianlangs} outperform our full system, which uses our complete phrase table, with bilingually extracted phrase pairs and both bilingually and monolingually estimated features. Additionally, adding monolingual features doesn't seem to help performance. However, it is nice to note that using only our given and induced bilingual dictionaries and our monolingual feature set to translate is equivalent to translating with a PBMT system trained on about $16,000$ parallel sentences.
+Unfortunately, these encouraging results aren't consistent across our Tamil and Hindi experiments. Figure \ref{fig:tatrans} shows the Tamil to English results. Here, both the Hiero and SAMT-based experiments presented in \newcite{post-callisonburch-osborne:2012:WMT} outperform our full system, which uses our complete phrase table, with bilingually extracted phrase pairs and both bilingually and monolingually estimated features. Additionally, adding monolingual features doesn't seem to help performance. However, it is nice to note that using only our given and induced bilingual dictionaries and our monolingual feature set to translate is equivalent to translating with a PBMT system trained on about $16,000$ parallel sentences.
 
 \begin{figure}
 \vskip 0.0in
@@ -523,6 +523,6 @@ Unfortunately, these encouraging results aren't consistent across our Tamil and 
 \newpage
 
 \bibliographystyle{naaclhlt2012}
-\bibliography{limt}
+\bibliography{bibliography}
 
 \end{document}
