@@ -15,6 +15,7 @@ Note: dumps of translations for all source words available on a01:
 /mnt/data/anni/Experiments/TranslateOOVs/$lang$/dictall/output
 Correct translations are starred.
 
+(4). For languages not written in roman script (so far: ne), there's also a lang.T directory in byFreqGraphs, which is the same as above, except edit distance scores based on transliterated words have been added. In general, performance goes up quite a bit.
 
 
 B. MachineTranslation
@@ -47,7 +48,7 @@ C. Documentation
 Additional Experiments:
 1. Tune weights on contextual, temporal, orthographic, and wikipedia topic features and combine optimally, instead of just MRR. Training data - part of gold standard dictionary and scored features and correct and incorrect translation pairs
 2. Vary amount of monolingual text, e.g. Farsi or Spanish, used to score dictionary translations.
-3. Add transliteration (buckwalter or full) for non-roman script languages
+3. Add transliteration (buckwalter or full) for non-roman script languages - DONE FOR LANGS W/ DETERMINISTIC TRANSLIT MAP
 4. Score stems of phrase table entries
 5. Training side of Indian language corpus LMs from Matt
 
