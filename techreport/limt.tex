@@ -15,21 +15,22 @@
 %\setlength\titlebox{6.5cm}
 \setlength\titlebox{2.7cm}
 
-\title{Experiments: Phrase-based MT + Bilingual Lexicon Induction}
+\title{Experiments: Phrase-based MT + Bilingual Lexicon Induction (DRAFT)}
 \author{Ann Irvine and Chris Callison-Burch}
+\date{\today}
 
 \begin{document}
 
 \maketitle
 
 \section{Introduction}
-This technical report describes three sets of experiments which are related to low resource machine translation. The first set evaluates a bilingual lexicon induction technique and the second two supplement a phrase-based MT system with scores and translations based on bilingual lexicon induction.
+This preliminary technical report describes three sets of experiments which are related to low resource machine translation. The first set evaluates a bilingual lexicon induction technique and the second two train a phrase-based MT system with scores and translations based on bilingual lexicon induction.
 
-We first evaluate the performance of a Rapp-style \cite{Rapp1999} bilingual lexicon induction framework. We use monolingual web crawl and wikipedia data to rank candidate translations for a given source language word. We perform experiments identifying English translations for words in {\it 23} source languages. We evaluate our results against dictionaries compiled using Mechanical Turk. 
+We first evaluate the performance of a Rapp-style \cite{Rapp1999} bilingual lexicon induction framework. We use monolingual web crawl and Wikipedia data to rank candidate translations for a given source language word. We perform experiments identifying English translations for words in 23 source languages. We evaluate our results against dictionaries compiled using Mechanical Turk. 
 
-We then supplement a phase-based MT system \cite{Moses} with the scores and translations that are the output of our bilingual lexicon induction framework. We use our assumed dictionaries, scores based on monolingual data, and induced translations to translate the same five Wikipedia pages for each of our 24 languages of interest. Because clean machine translation test sets do not exist for every language on our list, we do a qualitative analysis of the outputs.
+We then train a phase-based MT system \cite{Moses} with the scores and translations that are the output of our bilingual lexicon induction framework. We use the Mechanical Turk dictionaries, scores based on monolingual data, and induced translations to translate the same five Wikipedia pages for each of our 24 languages of interest. Because bilingual test sets do not exist for every language on our list, we do a qualitative analysis of the machine translation outputs.
 
-In our third set of experiments, we evaluate our techniques in the standard way, using an MT test set and measuring performance with the BLEU metric. In these experiments, we vary the amount of training data that we use to train the model. We also compare systems based only on parallel sentences with those which also access dictionaries and induced translations for OOV unigrams.
+In our third set of experiments, we evaluate our techniques in the standard way, by measuring performance with the BLEU metric on bilingual test sets. In these experiments, we vary the amount of bilingual training data that we use to train the model. We also compare systems based only on parallel sentences with those which also access dictionaries and induced translations for OOV unigrams.
 
 
 %\section{Background}
@@ -39,7 +40,7 @@ In our third set of experiments, we evaluate our techniques in the standard way,
 
 \section{Data}
 \subsection{Monolingual data}
-{\bf Web crawls} We have crawled online news websites for monolingual data in many of the world's languages. We used language-labeled Wikipedia data to train a language classifier. Because our data is comprised of news stories, each document also has an associated time stamp, which turns out to be useful (see Section \ref{ssec:temporal}). The amount of data that we have gathered for each of our 24 languages of interest is shown in Table \ref{table:crawls}.
+{\bf Web crawls} We have crawled online news websites for monolingual data in many of the world's languages. We used language-labeled Wikipedia data to train a language classifier. Because our data is comprised of news stories, each document also has an associated time stamp, which is used for calculating temporal similarity (see Section \ref{ssec:temporal}). The amount of data that we have gathered for each of our 24 languages of interest is shown in Table \ref{table:crawls}.
 
 \begin{table}\footnotesize
 \begin{center}
@@ -99,7 +100,7 @@ Russian & $105$M & &\\
 
 \subsection {Dictionaries}\label{ssec:dicts}
 
-Throughout the experiments we use two different sets of dictionaries. The first comes from a large collection of dictionaries, gathered from a variety of sources. Some were originally paper dictionaries which have been OCR'd. Others were originally electronic dictionaries. For some languages, we have multiple dictionaries, and we have simply concatenated them for the experiments described here. Some dictionaries only contain unigram translations while others contain translations of some source language phrases. These dictionaries will henceforth be referred to as the {\it standard dictionaries}. 
+Throughout the experiments we use two different sets of dictionaries. The first comes from a large collection of dictionaries, gathered from a variety of sources. Some were originally paper dictionaries which were scanned in and digitized with optical character recognition (OCR). Others were originally electronic dictionaries. For some languages, we have multiple dictionaries, and we have simply concatenated them for the experiments described here. Some dictionaries only contain translations of individual words while others contain translations of some source language phrases. In this report, these dictionaries will be referred to as the {\it standard dictionaries}. 
 
 We also use a set of dictionaries that were created using Mechanical Turk. In that dictionary creation, source language words were chosen starting with the most frequent words in that language's Wikipedia \footnote{Is that true?}. Although all of the source words in the Wikipedia dictionaries are unigrams, we allowed workers to translate them into multi-word English phrases. 
 
@@ -140,18 +141,19 @@ Russian  & $89,785$ & $423,009$ & e & $9,188$ & $11,785$ & c \\
 \end{tabular}
 \end{center}
 %\vskip -0.1in
-\caption{\label{table:dicts}Description of both standard and MTurk dictionaries. The number of unique source words and phrases in each dictionary is given along with the total number of translations. The source(s) of each standard dictionary is also given. {\it e} indicates that a dictionary was originally electronic and {\it o} indicates a paper dictionary that have been OCR'd. In some cases, we have both types of dictionaries for a given language. The final column indicates whether the primary script used in our dictionaries (as well as monolingual datasets) is Roman (r), Cyrillic (c), Arabic (a), Devanagari (d), or other (o).}
+\caption{\label{table:dicts}Description of both standard and MTurk dictionaries. The number of unique source words and phrases in each dictionary is given along with the total number of translations. The source(s) of each standard dictionary is also given. {\it e} indicates that a dictionary was originally electronic and {\it o} indicates a paper dictionary that was OCR'd. In some cases, we have both types of dictionaries for a given language. The final column indicates whether the primary script used in our dictionaries (as well as monolingual datasets) is Roman (r), Cyrillic (c), Arabic (a), Devanagari (d), or other (o).}
 %\vskip -0.15in
 \end{table*}
 
 \subsection{Languages}
-We chose the 23 languages listed because, for each, we had access to standard and MTurk dictionaries as well as some monolingual data from both the web crawls and Wikipedia. Additionally, we included some truly low resource languages (e.g. Somali, Nepali) and also some high resource languages for which we could more thoroughly evaluate MT performance (e.g. Urdu, Spanish).
+We selected the 23 languages because, for each, we had access to standard and MTurk dictionaries as well as some monolingual data from both the web crawls and Wikipedia. Additionally, we included some truly low resource languages (e.g. Somali, Nepali) and also some high resource languages for which we could more thoroughly evaluate MT performance (e.g. Urdu, Spanish).
 
 \section{Experiments 1: Bilingual lexicon induction}\label{sec:lexinduc}
 In our first set of experiments, we evaluate the quality of a bilingual lexicon induction framework that combines monolingual distributional, temporal, and orthographic signals to rank target language word translations for a given source language unigram. 
 
 \subsection{Contextual Similarity} 
-We score monolingual distributional similarity by first collecting contextual vectors for each source and target language unigram. The contextual vector for a given source language word, $w_{s_i}$, is the size of the source language vocabulary, $|V_s|$, and contains counts of how many times each word in the source language vocabulary appeared in the context of word $w_{s_i}$. In the experiments presented here, we use bag of words contexts in a window of size two (two words to the left of $w_{s_i}$ and two words to the right). Similarly, we collect context vectors for all target language words, $w_{t_j}$. In all experiments, we use the MTurk dictionaries to project the target language contextual vectors into the source language feature space in order to keep the dictionary size and quality constant across all source languages. Since the dictionaries are of reasonable size (see Table \ref{table:dicts}), we expect the quality of the projections to be sufficient for the task. We gather both source and target language contextual vectors from our web crawl data.
+We score monolingual distributional similarity by first collecting contextual vectors for each source and target language word. The contextual vector for a given source language word, $w_{s_i}$, is the size of the source language vocabulary, $|V_s|$, and contains counts of how many times each word in the source language vocabulary appeared in the context of word $w_{s_i}$. In the experiments presented here, we use bag of words contexts in a window of size two (two words to the left of $w_{s_i}$ and two words to the right). Similarly, we collect context vectors for all target language words, $w_{t_j}$. In all experiments, we use the MTurk dictionaries to project the target language contextual vectors into the source language feature space in order to keep the dictionary size and quality constant across all source languages. 
+We gather both source and target language contextual vectors from our web crawl data.
 
 \subsection{Temporal Similarity}\label{ssec:temporal}
 We gather temporal signatures for each source and target language unigram from our time-stamped web crawl data. That is, temporal signatures for a given word contain counts corresponding to how many times that word appeared in news articles with a certain date. We expect that source and target language words which are translations of one another will appear with similar frequencies over time in monolingual data. We collect temporal signatures over dates for which we have monolingual data in both languages. Our English web crawl data is essentially limitless, so we restrict the English data that we use in a particular source language experiment to be no more than three times the size of our source language web crawled data, and only include news articles from those dates for which we also have source language articles.
@@ -175,8 +177,8 @@ Performance among Indian languages, including Nepali, Hindi, Bengali, and Tamil,
 
 We see the highest accuracies for Albanian, Indonesian, and Romanian. Performance for Bosnian, Polish, and Welsh is also not bad. All six of these languages, like English, are written in the roman script, and we suspect that the edit distance similarity metric is able to capture a lot of transliterations and cognates. 
 
-\subsection{Future Work}
-Our immediate plans for future work are the following:
+\subsection{Coming Work}
+Our immediate plans for furthering the bilingual induction experiments are to:
 \begin{enumerate}
 \item{Incorporate a transliteration module that will enable high-quality edit distance scoring for source languages written in all scripts.}
 \item{Also use Wikipedia monolingual data to induce bilingual lexicons.}
@@ -437,7 +439,7 @@ We generated phrase tables for each source language based on the dictionaries de
 
 Each phrase pair in the translation table is scored using each of the same similarity scores described in Section \ref{sec:lexinduc}; contextual and temporal similarity based on data from web crawls, and orthographic similarity. Additionally, we compute a contextual similarity score based on the Wikipedia monolingual data. Finally, we also compute a {\bf topic similarity} score for each phrase pair. To estimate this score, we gather topical signatures for each source and target language phrase. Topical signature vectors are the length of the number of interlingually linked Wikipedia pages in the source language and English Wikipedias and contain counts of how many times each phrase appeared on a given page. With the interlingual links, we are able to directly compute the similarity between these topic signatures. 
 
-We don't have a bitext to use as a development set for tuning the feature weights, so we reuse the weights that were learned for a Spanish-English MT experiment involving exactly the same feature set. Of course, the source language and corpora change substantially in these new experiments, and the optimal weights are unlikely to be the same. In the future we hope to collect a few thousand sentences translations for each language, which would be enough to tune feature weights using, for example, MERT.
+Typically in statistical machine translation, a small bitext is used as a development set to tuning the feature weights of the log linear model.  For the low resource languages that we examine here, such data is not available even in the small quantities needed for tuning.  We therefore reuse the weights that were learned for a Spanish-English MT experiment that used the same set of monolingually derived features. Of course, the source language and corpora change substantially in these new experiments, and the optimal weights are unlikely to be the same. In the future we hope to collect a few thousand sentences translations for each language, which would be enough to tune feature weights using minimum error rate training (MERT).
 
 Because we do not have exact translations for each of our source language Wikipedia pages, we cannot evaluate translation quality with an automatic metric like BLEU. However, because the topics are familiar, it is possible to read the output and get a qualitative sense of the translation quality. Table \ref{table:qualtrans} shows the first few lines of each source language page on {\it Barack Obama} translated into English.
 
@@ -486,13 +488,13 @@ In the third set of experiments, we use the same techniques described above to t
 For each language, we perform end-to-end machine translation on the released test sets under the following conditions. In all cases we use a standard Moses phrase-based MT (PBMT) setup and vary only the source(s) of the phrase pairs contained in the phrase table and the set of features which are defined for each phrase pair.
 \begin{enumerate}
 \item{Phrase pairs extracted from bitext, bilingually estimated feature set, varying the amount of parallel training data.}
-\item{Phrase pairs extracted from bitext, bilingually estimated feature set supplemented with full set of monolingual features (contextual-crawls, temporal-crawls, orthographic, contextual-wikipedia, topical-wikipedia), varying the amount of parallel training data. }
+\item{Phrase pairs extracted from bitext, bilingually estimated feature set supplemented with full set of monolingual features (contextual-crawls, temporal-crawls, orthographic, contextual-Wikipedia, topical-Wikipedia), varying the amount of parallel training data. }
 \item{Phrase table composed of dictionaries and induced translations for OOVs, full set of monolingual features.}
 \item{Phrase pairs extracted from bitext supplemented with dictionaries and induced translations for OOVs, full bilingually and monolingually estimated feature set.}
 \end{enumerate}
 We use the development set for each language and MERT to tune our feature weights. We also compare our experimental results with those given in \newcite{post-callisonburch-osborne:2012:WMT}, which compares Hiero and SAMT based grammars but does not experiment with a syntax-free phrasal grammar. 
 
-It should be noted that \newcite{post-callisonburch-osborne:2012:WMT} uses a language model built from the target (English) side of the training data, rather than one built from a larger English corpus, such as the gigaword corpus. That work presents a boost of over a BLEU point when the smaller training-text based LM is used instead of a larger LM. We plan to experiment with the same smaller LM in the near future. It is also important to point out that the training data includes three or four translations for each unique source language sentence, each of which was collected from a different MTurk worker. So, the x-axes in Figures \ref{fig:bntrans} and \ref{fig:tatrans}, the number of training data sentences, refer to the total number of translation pairs, including duplicate source language sentences. 
+%It should be noted that \newcite{post-callisonburch-osborne:2012:WMT} uses a language model built from the target (English) side of the training data, rather than one built from a larger English corpus, such as the gigaword corpus. That work presents a boost of over a BLEU point when the smaller training-text based LM is used instead of a larger LM. We plan to experiment with the same smaller LM in the near future. It is also important to point out that the training data includes three or four translations for each unique source language sentence, each of which was collected from a different MTurk worker. So, the x-axes in Figures \ref{fig:bntrans} and \ref{fig:tatrans}, the number of training data sentences, refer to the total number of translation pairs, including duplicate source language sentences. 
 
 The results given in Figure \ref{fig:bntrans} are very encouraging. Our setup which uses all of the available parallel training data plus our dictionaries and induced translations for OOV words and both bilingually and monolingually estimated features (red line) outperforms all other setups, including the Heiro and SAMT-based experiments presented in \newcite{post-callisonburch-osborne:2012:WMT}. Furthermore, supplementing the standard PBMT setup with monolingual features (blue line vs. green line) results in a consistent performance gain, across varying amounts of training data. The final thing to note is that using only our given and induced bilingual dictionaries and monolingual feature set to translate is equivalent to translating based on about $6,400$ training parallel sentences if the monolingual feature set is used (blue line) and about $8,000$ if the monolingual feature set isn't used (green line).
 
