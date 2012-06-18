@@ -10,6 +10,7 @@
 \usepackage{graphicx} 
 \usepackage{longtable}
 \usepackage{caption}
+\usepackage{tipa}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 %\setlength\titlebox{6.5cm}
@@ -165,6 +166,9 @@ We measure orthographic similarity between a pair of words as the normalized\foo
 Rather than using absolute scores, we aggregate the {\it ranked lists} provided by each of the above three similarity measures. That is, for a given source language word, we score and rank all target language candidate translations (the target language vocabulary) using each of the above three metrics. We then compute the {\it mean reciprocal rank} (MRR) for each target language word and produce a new ranking based on the MRRs.
 
 \subsection{Results}
+
+{\bf Quantitative} 
+
 For each source language, we evaluate the above bilingual lexicon induction framework using percent accuracy in the top-1, top-10, and top-100 ranked target language word lists, compared against the MTurk dictionaries. This measure is somewhat conservative since the MTurk dictionaries aren't expected to be exhaustive, meaning that some target language translations for a given source language word won't appear in the dictionary and the system won't be given credit for ranking these target items high in its translation list. For each source language word, the target language list of candidate translations contains all unique word types observed in our target language monolingual corpus (in the case of these experiments, English web crawl data). 
 
 Figures \ref{fig:bli.az} through \ref{fig:bli.sk} present the bilingual lexicon induction experimental results. In each experiment, the $3,000$ most frequent source language words in the MTurk dictionary, with respect to the monolingual crawls data, were divided into 10 bins, by frequency. That is, the most frequent 300 source language words were put in the first bin, and the least frequent (among the most frequent 3000) 300 source language words were put into the tenth bin. The horizontal access in each figure plots the average corpus frequency of the words in a given bin versus the percent of those 300 source language words that have a correct translation in the top-k ranked list of translations. In general, our monolingual signals are stronger for those words that appear frequently in monolingual corpora than for those words that appear less frequently and have sparse context and temporal counts. Therefore, translation accuracy tends to be higher for frequent words than for less frequent words, resulting in accuracies that go up from left to right, or from lower frequency to higher frequency, in the figures.
@@ -176,6 +180,11 @@ As we have access to more monolingual data, the figures look more regular. That 
 Performance among Indian languages, including Nepali, Hindi, Bengali, and Tamil, is particularly low. While we have collected very small amounts of Nepali and Tamil web crawl monolingual data, the amount of Bengali data is modest, and we have a large amount of Hindi data. Yet, top-100 accuracy for even the most frequent Hindi words is only around 15\%. We suspect that adding transliteration-based edit distance scores will boost performance somewhat. It is also possible that English and Indian language news articles are less comparable than other language pairs. 
 
 We see the highest accuracies for Albanian, Indonesian, and Romanian. Performance for Bosnian, Polish, and Welsh is also not bad. All six of these languages, like English, are written in the roman script, and we suspect that the edit distance similarity metric is able to capture a lot of transliterations and cognates. 
+
+{\bf Qualitative} 
+
+Table \ref{table:lexinducexamples} shows lists of ranked translations under each of our similarity metrics for several words in each of our source languages.
+
 
 \subsection{Coming Work}
 Our immediate plans for furthering the bilingual induction experiments are to:
@@ -313,7 +322,6 @@ Our immediate plans for furthering the bilingual induction experiments are to:
 \end{center}
 \end{figure}
 
-\clearpage
 
 \begin{figure}
 %\vskip 0.0in
@@ -375,6 +383,9 @@ Our immediate plans for furthering the bilingual induction experiments are to:
 \end{center}
 \end{figure}
 
+\clearpage
+
+
 \begin{figure}
 %\vskip 0.0in
 \begin{center}
@@ -386,7 +397,6 @@ Our immediate plans for furthering the bilingual induction experiments are to:
 \end{center}
 \end{figure}
 
-\clearpage
 
 
 \begin{figure}
@@ -431,6 +441,64 @@ Our immediate plans for furthering the bilingual induction experiments are to:
 %\clearpage
 
 
+\begin{table*}
+\begin{center}
+\begin{tabular}{| c | l | l | l | l |}
+\hline
+ & Contextual & Temporal & Orthographic & Aggregation (MRR) \\
+\hline
+\hline
+\multicolumn{5}{|l|}{{\bf Azeri: v\textschwa ziyy\textschwa t (translation: situation)} } \\
+\hline
+1 & declared & oniston & vaziyat &  declared, vaziyat, oniston\\
+2 & exit & qoradori & visit, jamiyat &  exit \\
+3 & thailand & maria & vehicle, eight, joint, ... &  qoradori \\
+4 & state & shtatlar & &  visit, jamiyat\\
+5 & huricane & pokiston & &  maria \\
+6 & ardent & yordam & &  thailand \\
+7 & barak & richard & & shtatlar, state \\
+8 & nicknamed & audi & &  \\
+9 & extends & yicha & &  \\
+10 & supposed & comeback & &  \\
+\hline
+\hline
+\multicolumn{5}{|l|}{{\bf Nepali: } } \\
+\multicolumn{5}{|l|}{{\bf Tamil: } } \\
+\multicolumn{5}{|l|}{{\bf Somali: } } \\
+\multicolumn{5}{|l|}{{\bf Uzbek: } } \\
+\multicolumn{5}{|l|}{{\bf Romanian: } } \\
+\multicolumn{5}{|l|}{{\bf Albanian: } } \\
+\multicolumn{5}{|l|}{{\bf Indonesian: } } \\
+\multicolumn{5}{|l|}{{\bf Welsh: } } \\
+\multicolumn{5}{|l|}{{\bf Bengali: } } \\
+\multicolumn{5}{|l|}{{\bf Serbian: } } \\
+\multicolumn{5}{|l|}{{\bf Bosnian: } } \\
+\multicolumn{5}{|l|}{{\bf Polish: } } \\
+\multicolumn{5}{|l|}{{\bf Turkish: } } \\
+\multicolumn{5}{|l|}{{\bf Ukrainian: } } \\
+\multicolumn{5}{|l|}{{\bf Bulgarian: } } \\
+\multicolumn{5}{|l|}{{\bf Latvian: } } \\
+\multicolumn{5}{|l|}{{\bf Hindi: } } \\
+\hline
+\hline
+\multicolumn{5}{|l|}{{\bf Slovak: situ\'{a}cii (translation: situation)}} \\
+\hline
+1 & upturn & economic & stucco, studio, {\bf situation}, ituri, stupid, situated, ...& upturn, economic \\
+2 & recluse & companies & &  companies, recluse \\
+3 & pitsmoor & blame & & blame, pitsmoor \\
+4 & pira & feel & & pira, feel \\
+5 & mess & third & & mess, third \\
+6 & breathlessness & sharply & & sharply, breathlessness \\
+7 & applies & chairman & & chairman, applies \\
+8 & maz & sculptor & & sculptor, maz \\
+9 & pollaidh & opportunities & & {\bf situation} \\
+10 & filibuster & spark & & pollaidh, opportunities \\
+\hline
+\hline
+\end{tabular}
+\end{center}
+\caption{\label{table:lexinducexamples}Ranked translation candidates for source language words in each language.}
+\end{table*}
 
 \section{Experiments 2: Machine translation without parallel data}\label{sec:mtwpd}
 In the second set of experiments, we perform end-to-end machine translation, translating several Wikipedia pages in each of our 23 languages. We chose to translate the following source language Wikipedia pages because they are familiar topics, cover a variety of subjects, and exist in nearly all of our languages of interest: Barack Obama, New York, Computer, Islam, Forest. 
