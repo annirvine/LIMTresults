@@ -32,7 +32,7 @@ y100[,3] <- c3$X100[1:len]
 y100 <- apply(y100, 1, mean)
 
 xrange <- range(0, x)
-yrange <- range(-1, y1, y10, y100)
+yrange <- range(0, y1, y10, y100)
 
 colors <- c("blue", "green","red")
 names <- c("Top 1", "Top 10","Top 100") 
