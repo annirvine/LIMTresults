@@ -430,7 +430,7 @@ Figure \ref{fig:across-lang-lexinduc} plots the average top-100 accuracy for wor
 \begin{figure}
 \vskip 0.0in
 \begin{center}
-\includegraphics[width=1.0 \linewidth]{../byFreqGraphs/monodatascatter/scatter200.pdf}
+\includegraphics[width=1.1 \linewidth]{../byFreqGraphs/monodatascatter/scatter200.pdf}
 \vskip -0.15in
 \caption{Monolingual data vs. lexicon induction accuracy}
 \vskip -0.2in
@@ -519,7 +519,7 @@ Figure \ref{fig:across-lang-lexinduc} plots the average top-100 accuracy for wor
 \section{Experiments 2: Machine translation without parallel data}\label{sec:mtwpd}
 In the second set of experiments, we perform end-to-end machine translation, translating several Wikipedia pages in each of our 23 languages. We chose to translate the following source language Wikipedia pages because they are familiar topics, cover a variety of subjects, and exist in nearly all of our languages of interest: Barack Obama, New York, Computer, Islam, Forest. 
 
-We generated phrase tables for each source language based on the dictionaries described in Section \ref{ssec:dicts} as well as induced translations for OOV words (source language words in the Wikipedia pages that do not have dictionary translations). We used the methods described in Section \ref{ssec:dicts} and our monolingual web crawl data to propose 50 translations for each OOV source language word.
+We generated phrase tables for each source language based on the dictionaries described in Section \ref{ssec:dicts} as well as induced translations for OOV words (source language words in the Wikipedia pages that do not have dictionary translations). We used the methods described in Section \ref{ssec:dicts} and our monolingual web crawl data to propose 50 translations for each OOV source language word. In addition, we use contextual, orthographic, and topic similarity (described below) scores over our Wikipedia monolingual data to propose 50 additional translations for each OOV source language word.
 
 Each phrase pair in the translation table is scored using each of the same similarity scores described in Section \ref{sec:lexinduc}; contextual and temporal similarity based on data from web crawls, and orthographic similarity. Additionally, we compute a contextual similarity score based on the Wikipedia monolingual data. Finally, we also compute a {\bf topic similarity} score for each phrase pair. To estimate this score, we gather topical signatures for each source and target language phrase. Topical signature vectors are the length of the number of interlingually linked Wikipedia pages in the source language and English Wikipedias and contain counts of how many times each phrase appeared on a given page. With the interlingual links, we are able to directly compute the similarity between these topic signatures. 
 
