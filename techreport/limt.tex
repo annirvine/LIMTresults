@@ -455,64 +455,66 @@ Figure \ref{fig:across-lang-lexinduc} plots the average top-100 accuracy for wor
 %\clearpage
 
 
-\begin{table*}
-\begin{center}
-\begin{tabular}{| c | l | l | l | l |}
-\hline
- & Contextual & Temporal & Orthographic & Aggregation (MRR) \\
-\hline
-\hline
-\multicolumn{5}{|l|}{{\bf Azeri: v\textschwa ziyy\textschwa t (translation: situation)} } \\
-\hline
-1 & declared & oniston & vaziyat &  declared, vaziyat, oniston\\
-2 & exit & qoradori & visit, jamiyat &  exit \\
-3 & thailand & maria & vehicle, eight, joint, ... &  qoradori \\
-4 & state & shtatlar & &  visit, jamiyat\\
-5 & huricane & pokiston & &  maria \\
-6 & ardent & yordam & &  thailand \\
-7 & barak & richard & & shtatlar, state \\
-8 & nicknamed & audi & &  \\
-9 & extends & yicha & &  \\
-10 & supposed & comeback & &  \\
-\hline
-\hline
-\multicolumn{5}{|l|}{{\bf Nepali: } } \\
-\multicolumn{5}{|l|}{{\bf Tamil: } } \\
-\multicolumn{5}{|l|}{{\bf Somali: } } \\
-\multicolumn{5}{|l|}{{\bf Uzbek: } } \\
-\multicolumn{5}{|l|}{{\bf Romanian: } } \\
-\multicolumn{5}{|l|}{{\bf Albanian: } } \\
-\multicolumn{5}{|l|}{{\bf Indonesian: } } \\
-\multicolumn{5}{|l|}{{\bf Welsh: } } \\
-\multicolumn{5}{|l|}{{\bf Bengali: } } \\
-\multicolumn{5}{|l|}{{\bf Serbian: } } \\
-\multicolumn{5}{|l|}{{\bf Bosnian: } } \\
-\multicolumn{5}{|l|}{{\bf Polish: } } \\
-\multicolumn{5}{|l|}{{\bf Turkish: } } \\
-\multicolumn{5}{|l|}{{\bf Ukrainian: } } \\
-\multicolumn{5}{|l|}{{\bf Bulgarian: } } \\
-\multicolumn{5}{|l|}{{\bf Latvian: } } \\
-\multicolumn{5}{|l|}{{\bf Hindi: } } \\
-\hline
-\hline
-\multicolumn{5}{|l|}{{\bf Slovak: situ\'{a}cii (translation: situation)}} \\
-\hline
-1 & upturn & economic & stucco, studio, {\bf situation}, ituri, stupid, situated, ...& upturn, economic \\
-2 & recluse & companies & &  companies, recluse \\
-3 & pitsmoor & blame & & blame, pitsmoor \\
-4 & pira & feel & & pira, feel \\
-5 & mess & third & & mess, third \\
-6 & breathlessness & sharply & & sharply, breathlessness \\
-7 & applies & chairman & & chairman, applies \\
-8 & maz & sculptor & & sculptor, maz \\
-9 & pollaidh & opportunities & & {\bf situation} \\
-10 & filibuster & spark & & pollaidh, opportunities \\
-\hline
-\hline
-\end{tabular}
-\end{center}
-\caption{\label{table:lexinducexamples}Ranked translation candidates for source language words in each language.}
-\end{table*}
+%\begin{table*}
+%\begin{center}
+%\begin{tabular}{| c | l | l | l | l |}
+%\hline
+ %& Contextual & Temporal & Orthographic & Aggregation (MRR) \\
+%\hline
+%\hline
+%\multicolumn{5}{|l|}{{\bf Azeri: v\textschwa ziyy\textschwa t (translation: situation)} } \\
+%\hline
+%1 & declared & oniston & vaziyat &  declared, vaziyat, oniston\\
+%2 & exit & qoradori & visit, jamiyat &  exit \\
+%3 & thailand & maria & vehicle, eight, joint, ... &  qoradori \\
+%4 & state & shtatlar & &  visit, jamiyat\\
+%5 & huricane & pokiston & &  maria \\
+%6 & ardent & yordam & &  thailand \\
+%7 & barak & richard & & shtatlar, state \\
+%8 & nicknamed & audi & &  \\
+%9 & extends & yicha & &  \\
+%10 & supposed & comeback & &  \\
+%\hline
+%\hline
+%\multicolumn{5}{|l|}{{\bf Nepali: } } \\
+%\multicolumn{5}{|l|}{{\bf Tamil: } } \\
+%\multicolumn{5}{|l|}{{\bf Somali: } } \\
+%\multicolumn{5}{|l|}{{\bf Uzbek: } } \\
+%\multicolumn{5}{|l|}{{\bf Romanian: } } \\
+%\multicolumn{5}{|l|}{{\bf Albanian: } } \\
+%\multicolumn{5}{|l|}{{\bf Indonesian: } } \\
+%\multicolumn{5}{|l|}{{\bf Welsh: } } \\
+%\multicolumn{5}{|l|}{{\bf Bengali: } } \\
+%\multicolumn{5}{|l|}{{\bf Serbian: } } \\
+%\multicolumn{5}{|l|}{{\bf Bosnian: } } \\
+%\multicolumn{5}{|l|}{{\bf Polish: } } \\
+%\multicolumn{5}{|l|}{{\bf Turkish: } } \\
+%\multicolumn{5}{|l|}{{\bf Ukrainian: } } \\
+%\multicolumn{5}{|l|}{{\bf Bulgarian: } } \\
+%\multicolumn{5}{|l|}{{\bf Latvian: } } \\
+%\multicolumn{5}{|l|}{{\bf Hindi: } } \\
+%\hline
+%\hline
+%\multicolumn{5}{|l|}{{\bf Slovak: situ\'{a}cii (translation: situation)}} \\
+%\hline
+%1 & upturn & economic & stucco, studio, {\bf situation}, ituri, stupid, situated, ...& upturn, economic \\
+%2 & recluse & companies & &  companies, recluse \\
+%3 & pitsmoor & blame & & blame, pitsmoor \\
+%4 & pira & feel & & pira, feel \\
+%5 & mess & third & & mess, third \\
+%6 & breathlessness & sharply & & sharply, breathlessness \\
+%7 & applies & chairman & & chairman, applies \\
+%8 & maz & sculptor & & sculptor, maz \\
+%9 & pollaidh & opportunities & & {\bf situation} \\
+%10 & filibuster & spark & & pollaidh, opportunities \\
+%\hline
+%\hline
+%\end{tabular}
+%\end{center}
+%\caption{\label{table:lexinducexamples}Ranked translation candidates for source language words in each language.}
+%\end{table*}
+
+\clearpage
 
 \section{Experiments 2: Machine translation without parallel data}\label{sec:mtwpd}
 In the second set of experiments, we perform end-to-end machine translation, translating several Wikipedia pages in each of our 23 languages. We chose to translate the following source language Wikipedia pages because they are familiar topics, cover a variety of subjects, and exist in nearly all of our languages of interest: Barack Obama, New York, Computer, Islam, Forest. 
@@ -547,7 +549,7 @@ barack obama 1983 - the relations and in colombia graduated 1985 - the lots ther
 Nepali & {administration cocaine obama ( public i e : age 4 e t 1961 ) , american win raj e t e customs is e he this country p e assault ash e ( son of states e acknowledges ) raj e t e customs is e ? he 20 , 2009 january of easter day e t e position era era g e job done is e ? obama quarters e royal navy raise e th states and 2008 american in easter e consortium sympathy for handling e triumph over e tika um e e was made war ? obama defeat e var e l d s update e son 1991 e in e s administration , make where they defeat e var e l d shall e first spacecraft of states e element adh e ik e also sh was 1997 ? from king quarters illicit three system complete gar e nu obama before community frankly work did shape and citizen rights apply e shape during p e wards e certainly did from 1992 explicit sam e me he reviewed turning law e said e foreign constitutional law adh e quality are y e also did ? son 2000 e in american house af offers e actors actors get e gar not after unsuccessful january in 2003 his sight criticism e impaired f experiencing this e mar e ch in expelled p e landslide victory p e wards e t did ninth and e wishes in 2003 selected for new dylan e was}\\
 \hline
 %Tamil & {பராக் உசேன் obama ( barack hussein obama , hatch : bəˈrɑːk hʊˈseɪn oʊˈbɑːmə , birth : august 4 , 1961 ) , american 2008 republic leader election win democratic party . candidates now he மேலவையிலும் இலினொய் state support young members . they are american history africa american race from first republic leader in power , and sent house fifth country native in power available for them . colombia university harvard clever but vain talk college degrees received obama politics world சேர்வதற்கு before chicago south in company joint ( community organizer ) public law worked lawyer . 1997இல் இலினொய் state legislature elected 2004 time was in office . 1992 first 2004 time chicago university clever but vain talk college professor worked .}\\
-\hline
+%\hline
 Somali & {barack obama it is man of young is you large and to many of usa uruguay it is 47 old . the the new hawaii in region last month juli 27 laughed , year 1961 the . the just birth father of people black and he came from kenya light and people mother white and , of from watch jittery region of american and in him surrender barack obama , the the two girls have and with hamburger with called and father sasha the from him the he left is two years old to of the education leads from give the colosseum . bikes the after the to he returned land the he came from of kenya . illinois , after senator obama the mother is married man he came from the country . indonesia and then they have moved and to in the latter while in to in the one between 1969 until 1971 the . obama , when the to after , he returned hawaii region of mother becomes the in bombay , the the with where live converse new white mother of was .}\\
 \hline
 Uzbek & {michelle senate obama ii ( pronounced : barak congratulated obama another ; 1961 - yili 4 - august ) america 44 - as well as modern affairs . extinguished killing her initial office force . 
