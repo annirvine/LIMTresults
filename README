@@ -6,16 +6,15 @@ Evaluation of lexicon induction framework for 24 languages (intersection of MTur
 
 By-language directory for each:
 
-1. lang/lexinductnew.pdf : plot of frequency vs. accuracy in top-1, top-10, and top-100 outputs. If any MTurk worker has annotated a target word as a translation of a source language word, then it is considered correct. Translations are ranked using the mean reciprocal rank of the rankings given by our (1) contextual, (2) temporal, and (3) edit distance monolingual signals. Additional plots for each signal individually can be easily added. The 3000 most frequent words (wrt monolingual crawls) in our test dictionary were divided into 15 bins, by frequency. The average frequency of the words in each bin is plotted vs. the average translation accuracy of the words in each bin. If fewer than 3000 source language dictionary words appeared in the monolingual data, then the entire intersection of the two was used. The average corpus frequency (x-axis on the graphs) varies because (1) the test set size varied, as described, and (2) the size of the monolingual corpora varies.
+1. lang/lexinductnew.pdf : plot of frequency vs. accuracy in top-1, top-10, and top-100 outputs. If any MTurk worker has annotated a target word as a translation of a source language word, then it is considered correct. Translations are ranked using the mean reciprocal rank of the rankings given by our (1) contextual (all available dictionaries used for projection), (2) temporal, and (3) edit distance (if non-roman script language, words transliterated first) monolingual signals. Additional plots for each signal individually can be easily added. The 3000 most frequent words (wrt monolingual crawls) in our test dictionary were divided into 15 bins, by frequency. The average frequency of the words in each bin is plotted vs. the average translation accuracy of the words in each bin. If fewer than 3000 source language dictionary words appeared in the monolingual data, then the entire intersection of the two was used. The average corpus frequency (x-axis on the graphs) varies because (1) the test set size varied, as described, and (2) the size of the monolingual corpora varies.
 
-2. By-Frequency translation dumps: For each of three runs (which are averaged for the graph above): on clsp grid: /home/anni/lexinducresults/translationdumps/lang/runx/{aggmrr,context,edit,time}.scored contains a dump of the top 500 translations for all source language words translated in (1). Correct translations are starred. [Not included in github repo because filesizes are very large.]
+2. By-Frequency translation dumps: For each of three runs (which are averaged for the graph above): on COE grid: /home/hltcoe/airvine/inducePhraseTable/LIMT/Experiments/LexInductExps/lang/runx/{aggmrr,context,edit,time}.scored contains a dump of the top 500 translations for all source language words translated in (1). Correct translations are starred. [Not included in github repo because filesizes are very large.]
 
+----Not updated on COE cluster, not included in new paper draft
 3. Summary statistic (accuracy in top k using one or aggregate of three monolingual signals) for *all* source language words in the MTurk dictionaries (regardless of frequency) in lang/summarystats
 Note: dumps of translations for all source words available on a01:
 /mnt/data/anni/Experiments/TranslateOOVs/$lang$/dictall/output
 Correct translations are starred.
-
-(4). For languages not written in roman script (so far: ne), there's also a lang.T directory in byFreqGraphs, which is the same as above, except edit distance scores based on transliterated words have been added. In general, performance goes up quite a bit.
 
 
 B. MachineTranslation
@@ -48,7 +47,12 @@ C. Documentation
 Additional Experiments:
 1. Tune weights on contextual, temporal, orthographic, and wikipedia topic features and combine optimally, instead of just MRR. Training data - part of gold standard dictionary and scored features and correct and incorrect translation pairs
 2. Vary amount of monolingual text, e.g. Farsi or Spanish, used to score dictionary translations.
-3. Add transliteration (buckwalter or full) for non-roman script languages - DONE FOR LANGS W/ DETERMINISTIC TRANSLIT MAP
+3. Add transliteration (buckwalter or full) for non-roman script languages - DONE
 4. Score stems of phrase table entries
 5. Training side of Indian language corpus LMs from Matt
+6. keep evaluation set the same, use full for contextual vector projection - DONE
+7. scatter plot: amount of monolingual data vs. lexicon induction performance (e.g. fixed point at corpus freq = 1k and top 10 vs millions of monolingual tokens) - DONE
+8. oovs in 5 representative wikipedia pages  - add wikipedia source pages with dummy time stamps to monolingual web crawl data (at least will get rid of all oovs, even if induced translations are nonsense) - DONE
+9. learning curve over spanish monolingual data
+10. Section 5 to add:  (1) dictionary PT translation w/o mono scores (2) learning curve for blue, green, red line (start with dictionary, then append training at each step)
 
