@@ -160,38 +160,30 @@ We gather both source and target language contextual vectors from our web crawl 
 We gather temporal signatures for each source and target language unigram from our time-stamped web crawl data. That is, temporal signatures for a given word contain counts corresponding to how many times that word appeared in news articles with a certain date. We expect that source and target language words which are translations of one another will appear with similar frequencies over time in monolingual data. We collect temporal signatures over dates for which we have monolingual data in both languages. Our English web crawl data is essentially limitless, so we restrict the English data that we use in a particular source language experiment to be no more than three times the size of our source language web crawled data, and only include news articles from those dates for which we also have source language articles. In all experiments in this report, we use a sliding window of three days to estimate temporal similarity between a pair of word or phrase temporal signatures.
 
 \subsection{Orthographic Similarity} 
-We measure orthographic similarity between a pair of words as the normalized\footnote{Normalized by the average of the lengths of the two words} edit distance between the two words. We expect the edit distance between an English word and a word from a source language which is also written in the roman script to be quite informative, particularly for word classes that tend to be transliterated, rather than translated, across languages (e.g. person and place names). In these experiments, we do not first transliterate non-roman script source language words before computing edit distance. Thus, for non-roman source languages, none of the characters will match, and our edit distance measure is simply an indication of the difference in length between the two words. 
+We measure orthographic similarity between a pair of words as the normalized\footnote{Normalized by the average of the lengths of the two words} edit distance between the two words. For non-roman script languages, we transliterate words into the roman script before measuring orthographic similarity. For word classes that tend to be transliterated, rather than translated, (e.g. person and place names), we expect the edit distances between English words and their translations to be small. 
 
 \subsection{Score Aggregation} 
 Rather than using absolute scores, we aggregate the {\it ranked lists} provided by each of the above three similarity measures. That is, for a given source language word, we score and rank all target language candidate translations (the target language vocabulary) using each of the above three metrics. We then compute the {\it mean reciprocal rank} (MRR) for each target language word and produce a new ranking based on the MRRs.
 
 \subsection{Results}
 
-{\bf Quantitative} 
+%{\bf Quantitative} 
 
 For each source language, we evaluate the above bilingual lexicon induction framework using percent accuracy in the top-1, top-10, and top-100 ranked target language word lists, compared against the MTurk dictionaries. This measure is somewhat conservative since the MTurk dictionaries aren't expected to be exhaustive, meaning that some target language translations for a given source language word won't appear in the dictionary and the system won't be given credit for ranking these target items high in its translation list. We use the MTurk dictionaries only as a gold standard in order to keep the dictionary size and quality constant across all source languages. For each source language word, the target language list of candidate translations contains all unique word types observed in our target language monolingual corpus (in the case of these experiments, English web crawl data). 
 
-Figures \ref{fig:bli.az} through \ref{fig:bli.sk} present the bilingual lexicon induction experimental results. In each experiment, the $3,000$ most frequent source language words in the MTurk dictionary, with respect to the monolingual crawls data, were divided into 10 bins, by frequency. That is, the most frequent 300 source language words were put in the first bin, and the least frequent (among the most frequent 3000) 300 source language words were put into the tenth bin. The horizontal access in each figure plots the average corpus frequency of the words in a given bin versus the percent of those 300 source language words that have a correct translation in the top-k ranked list of translations. In general, our monolingual signals are stronger for those words that appear frequently in monolingual corpora than for those words that appear less frequently and have sparse context and temporal counts. Therefore, translation accuracy tends to be higher for frequent words than for less frequent words, resulting in accuracies that go up from left to right, or from lower frequency to higher frequency, in the figures.
+Figures \ref{fig:bli.az} through \ref{fig:bli.fa} present the bilingual lexicon induction experimental results. In each experiment, the $3,000$ most frequent source language words in the MTurk dictionary, with respect to the monolingual crawls data, were divided into 10 bins, by frequency. That is, the most frequent 300 source language words were put in the first bin, and the least frequent (among the most frequent 3000) 300 source language words were put into the tenth bin. The horizontal access in each figure plots the average corpus frequency of the words in a given bin versus the percent of those 300 source language words that have a correct translation in the top-k ranked list of translations. In general, our monolingual signals are stronger for those words that appear frequently in monolingual corpora than for those words that appear less frequently and have sparse context and temporal counts. Therefore, translation accuracy tends to be higher for frequent words than for less frequent words, resulting in accuracies that go up from left to right, or from lower frequency to higher frequency, in the figures.
  
-The results are presented starting with the language with the least amount of monolingual web crawl data (Azeri, Figure \ref{fig:bli.az}) and ending with the language with the largest amount of monolingual web crawl data (Slovak, Figure \ref{fig:bli.sk}). Corpus frequencies for even the most frequent words in the first few source languages are very small. For example, the average frequency of the 300 most frequent Azeri and Nepali words is around 200. For those languages which we have very little monolingual data, all of the contextual and temporal vectors are sparse and translation accuracies are low.
+The results are presented starting with the language with the least amount of monolingual web crawl data (Azeri, Figure \ref{fig:bli.az}) and ending with the language with the largest amount of monolingual web crawl data (Farsi, Figure \ref{fig:bli.fa}), among those languages for which results are presented. Corpus frequencies for even the most frequent words in the first few source languages are very small. For example, the average frequency of the 300 most frequent Azeri and Nepali words is around 200. For those languages which we have very little monolingual data, all of the contextual and temporal vectors are sparse and, in general, translation accuracies are low.
 
 As we have access to more monolingual data, the figures look more regular. That is, given a sufficient amount of monolingual text, we do observe that our translation accuracy is higher for more frequent source language words than for less frequent source language words. This trend is particularly clear in the Albanian (Figure \ref{fig:bli.sq}) and Indonesian (Figure \ref{fig:bli.id}) plots.
 
-Performance among Indian languages, including Nepali, Hindi, Bengali, and Tamil, is particularly low. While we have collected very small amounts of Nepali and Tamil web crawl monolingual data, the amount of Bengali data is modest, and we have a large amount of Hindi data. Yet, top-100 accuracy for even the most frequent Hindi words is only around 15\%. We suspect that adding transliteration-based edit distance scores will boost performance somewhat. It is also possible that English and Indian language news articles are less comparable than other language pairs. 
+Performance among Indian languages, including Nepali, Hindi, Bengali, and Tamil, is particularly low. While we have collected very small amounts of Nepali and Tamil web crawl monolingual data, the amount of Bengali data is modest, and we have a large amount of Hindi data. Yet, top-100 accuracy for even the most frequent Hindi words is only around 15\%. It is also possible that English and Indian language news articles are less comparable than other language pairs. 
 
-We see the highest accuracies for Albanian, Indonesian, and Romanian. Performance for Bosnian, Polish, and Welsh is also not bad. All six of these languages, like English, are written in the roman script, and we suspect that the edit distance similarity metric is able to capture a lot of transliterations and cognates. 
-
-{\bf Qualitative} 
-
-Table \ref{table:lexinducexamples} shows lists of ranked translations under each of our similarity metrics for several words in each of our source languages.
+Figure \ref{fig:across-lang-lexinduc} plots the average top-100 accuracy for word bins with an average monolingual corpus frequency of 200 versus the amount of monolingual web crawl data for each of the twenty languages explored in this section. {\it Within a set of related languages}, an increase in monolingual data improves accuracy in some cases. For example, performance on Slovak and Bulgarian is higher than that of Serbian and Ukrainian, and have access to more monolingual data for those languages. Across all languages, however, this correlation isn't consistent. For example, performance on Somali is very good despite the limited amount of monolingual data.
 
 
-\subsection{Coming Work}
-Our immediate plans for furthering the bilingual induction experiments are to:
-\begin{enumerate}
-\item{Incorporate a transliteration module that will enable high-quality edit distance scoring for source languages written in all scripts.}
-\item{Also use Wikipedia monolingual data to induce bilingual lexicons.}
-\end{enumerate}
+%{\bf Qualitative} 
+%Table \ref{table:lexinducexamples} shows lists of ranked translations under each of our similarity metrics for several words in each of our source languages.
 
 
 
@@ -383,7 +375,6 @@ Our immediate plans for furthering the bilingual induction experiments are to:
 \end{center}
 \end{figure}
 
-\clearpage
 
 
 \begin{figure}
@@ -397,6 +388,7 @@ Our immediate plans for furthering the bilingual induction experiments are to:
 \end{center}
 \end{figure}
 
+\clearpage
 
 
 \begin{figure}
@@ -423,6 +415,28 @@ Our immediate plans for furthering the bilingual induction experiments are to:
 \end{center}
 \end{figure}
 
+\begin{figure}
+\vskip 0.0in
+\begin{center}
+\includegraphics[width=0.9 \linewidth]{../byFreqGraphs/fa/lexinductnew.pdf}
+\vskip -0.15in
+\caption{Farsi bilingual lexicon induction results}
+\vskip -0.2in
+\label{fig:bli.fa} 
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\vskip 0.0in
+\begin{center}
+\includegraphics[width=1.0 \linewidth]{../byFreqGraphs/monodatascatter/scatter200.pdf}
+\vskip -0.15in
+\caption{Monolingual data vs. lexicon induction accuracy}
+\vskip -0.2in
+\label{fig:across-lang-lexinduc} 
+\end{center}
+\end{figure}
 
 
 %\begin{figure}
@@ -523,24 +537,36 @@ Language & Translation Output \\
 Language & Translation Output \\
 \endhead
 \hline
-Azeri & {barack hussein obama ( ing. barack hussein obama year ; 4 august 1961 ) - media the united states 44th president . 
-in 2009 literary literary award substitute .  vital . 4 august 1961 hawaii in whether born the barack hussein gallery qarad?rili father ordinary also barack hussein obama ( father ) , a?d?rili his mother ordinary the stenli enn danhem was keniyadan the his father with kanzasdan being the mother hawaii university am were . barack obama in 1983 in colombia university graduated in 1985 and in chicago köç?r?k there and murder unemployment wrapped mehelle living conditions improve for the responsibility studying group work began . 1991 equipment in harvard right school he graduated from it and , d? harvard right communities magazine editor occurred first qarad?rili america .} \\
+Azeri & {barack hussein obama ( ing . king hussein obama ; 4 year august 1961 ) - from the united states 44 - the president . 
+2009 - in the literary peace prize . career 
+life 
+4 august 1961 - the hawaii rise was born in the barack hussein tree televised also barack hussein father ordinary sightings ( father ) , obtained his mother the sinai end kids ordinary was . obtained the his father with exceeding the the mother hawaii university am were . 
+barack obama 1983 - the relations and in colombia graduated 1985 - the lots there and in speeches plenty position caves cramped living conditions for ratification improve the slight group was to work . 
+1991 - in the sightings harvard law school report . he and , d? harvard law i village? magazine editor inter- first televised america .} \\
 \hline
-Nepali & {बराक हुसैन obama ( birth : 4 august , 1961 ) american ४४औं country is he this first country अश्वेत ( african अमरीकन ) country is । 20 he january , 2009 of national day position strengthening get done is । obama इलिनॉय राज्यबाट कनिष्ठ सेनेटर and 2008 in राष्टपति american sympathy for democratic party candidate । was obama हार्वर्ड ल स्कूलबाट san in 1991 graduate make , where he हार्वर्ड ल first रिव्यूका african अमरीकी also president was । 1997 from २००४ इलिनॉय सेनेटमा three complete सेवाकाल to do before obama community आयोजकको shape did work and citizens rights अधिवक्ताका shape did प्रेक्टिस 1992 from २००४ upto he शिकागो university law constitutional law adhyapaku also work did । san 2000 america in house आफ रिप्रेसेंटेटिवमा सीट do get unsuccessful after his january in 2003 sight अमरीकी सेनेटतर्फ was march in २००४ primary victory did receive and नवम्बर in 2003 सेनेटका for was elected}\\
+Nepali & {administration cocaine obama ( public i e : age 4 e t 1961 ) , american win raj e t e customs is e he this country p e assault ash e ( son of states e acknowledges ) raj e t e customs is e ? he 20 , 2009 january of easter day e t e position era era g e job done is e ? obama quarters e royal navy raise e th states and 2008 american in easter e consortium sympathy for handling e triumph over e tika um e e was made war ? obama defeat e var e l d s update e son 1991 e in e s administration , make where they defeat e var e l d shall e first spacecraft of states e element adh e ik e also sh was 1997 ? from king quarters illicit three system complete gar e nu obama before community frankly work did shape and citizen rights apply e shape during p e wards e certainly did from 1992 explicit sam e me he reviewed turning law e said e foreign constitutional law adh e quality are y e also did ? son 2000 e in american house af offers e actors actors get e gar not after unsuccessful january in 2003 his sight criticism e impaired f experiencing this e mar e ch in expelled p e landslide victory p e wards e t did ninth and e wishes in 2003 selected for new dylan e was}\\
 \hline
-Tamil & {பராக் உசேன் obama ( barack hussein obama , hatch : bəˈrɑːk hʊˈseɪn oʊˈbɑːmə , birth : august 4 , 1961 ) , american 2008 republic leader election win democratic party . candidates now he மேலவையிலும் இலினொய் state support young members . they are american history africa american race from first republic leader in power , and sent house fifth country native in power available for them . colombia university harvard clever but vain talk college degrees received obama politics world சேர்வதற்கு before chicago south in company joint ( community organizer ) public law worked lawyer . 1997இல் இலினொய் state legislature elected 2004 time was in office . 1992 first 2004 time chicago university clever but vain talk college professor worked .}\\
+%Tamil & {பராக் உசேன் obama ( barack hussein obama , hatch : bəˈrɑːk hʊˈseɪn oʊˈbɑːmə , birth : august 4 , 1961 ) , american 2008 republic leader election win democratic party . candidates now he மேலவையிலும் இலினொய் state support young members . they are american history africa american race from first republic leader in power , and sent house fifth country native in power available for them . colombia university harvard clever but vain talk college degrees received obama politics world சேர்வதற்கு before chicago south in company joint ( community organizer ) public law worked lawyer . 1997இல் இலினொய் state legislature elected 2004 time was in office . 1992 first 2004 time chicago university clever but vain talk college professor worked .}\\
 \hline
-Somali & {barack obama it is man of also is you xargo and to many of usa years old it is 47 jir. the new the in region hawaii last month juli 27 teedii , year 1961 the dii. just birth father people of from black and he came wadaka kenya mother people and white and , of from watch kansas region of american and in him afadiisa intimacy obama , is have the two girls with called and with malia sasha the and his father the he left from him is two years old to education of the from give leads harvard. the after the dozens the to he returned land from of the he came kenya. aabbiihiis after , senator obama the mother is married man he came from the country indonesia to and then they have moved in the noolayeen while and in to in the one between 1969 until 1971dii. obama , the to immediately after , he returned hawaii region of mother is in indanusia , it was the where live the with parent mother new white was of .}\\
+Somali & {barack obama it is man of young is you large and to many of usa uruguay it is 47 old . the the new hawaii in region last month juli 27 laughed , year 1961 the . the just birth father of people black and he came from kenya light and people mother white and , of from watch jittery region of american and in him surrender barack obama , the the two girls have and with hamburger with called and father sasha the from him the he left is two years old to of the education leads from give the colosseum . bikes the after the to he returned land the he came from of kenya . illinois , after senator obama the mother is married man he came from the country . indonesia and then they have moved and to in the latter while in to in the one between 1969 until 1971 the . obama , when the to after , he returned hawaii region of mother becomes the in bombay , the the with where live converse new white mother of was .}\\
 \hline
-Uzbek & {barack hussein obama ii ( pronunciation : barack husayn obama launcher ; 1961-yili 4-avgust ) america 44- sham now president bungacha illinoys shtatining senatori fatherland accomplished .  2009-yil 9-oktabrida tinchlikka tries uchun specialized open prize taqdirini . source  ishoratlar  barack obama quo receiving obama maʼmuriyati , flighty. u n ' yu-y ' ork - american military qo ' mohammed shtatlardan biri. capital - albany citadel bellwether union ' seagulls on the 21st of august 1959 yilda kirgan , undan old - province of new york , then sovereign state in confederation .} \\
+Uzbek & {michelle senate obama ii ( pronounced : barak congratulated obama another ; 1961 - yili 4 - august ) america 44 - as well as modern affairs . extinguished killing her initial office force . 
+2009 - year 9 - old peace policy review for award by innovation . 
+another 
+article 
+barack obama response president obama fanatic , white it 
+n ' and - y ' latin - america qo ' sales each other futuristic . capital - chilean city . us singer ' topic on the 21st of august 1959 in the year commissions , from them before unveiling horse - new york , downtown new state in coordination .} \\
 \hline
-Romanian & {american interpreted remarks second speech ( in english / bəˈɹɑːk huˈseɪn oʊˈbɑːmə / ; b(born) . 4 august 1961 , honolulu , hawaii , son by american hussein obama , sr . — born at come from kenyană nyanza , from ethnicity luo — also al him ann dunham — born at wichita , kansas ) is al 44-lea president al states ( united first afro-american clear at this position ) , for parliamentary elections on 4 november 2008 , by joe cole as vice president ) . a former vest acting on 20 january 2009 but l-a changed by faking his george w. bush . son a kenyan , american hussein obama , sr. also al an american , ann dunham secretary , obama was game one important part was girl at honolulu , hawaii on six by decade was lived at jakarta , with mother and father of and cruel , indonesia release al liberal columbus also al proclamation from even by reprieve , above a stand that access into government and a state to join al senate state illinois between 1997 and 2004 , a director ago as fitting person , docent worldwide in particular and champion in rights protection civile.}\\
+Romanian & {american interpreted remarks second speech (born) . 
+4 august 1961 , honolulu , hawaii , son by american hussein obama , sr . � born at come from kenyan? nyanza , from ethnicity luo � also al him ann dunham � born at wichita , kansas ) is al 44-lea president al states ( united first afro-american clear at this position ) , for parliamentary elections on 4 november 2008 , by joe cole as vice president ) . a former vest acting on 20 january 2009 but l-a changed by faking his george w. bush .}\\
 \hline
-Albanian & {barack obama barack hussein obama ( born in 4 august 1961 in honolulu , barrack ) is president of 44-të of united states of to american barack obama is successful of price for nobel prize in year 2009. he is president first afro-american . in year 2004 he was elected to us senator in illinois. candidates like president for election campaign of and declared in 10 short 2007 in springfield ( unattached ) . on 3 june 2008 obama reached , according to data to tunnel , and offers necessary to votes for tag as to candidate for president , in that his party , left by after thus competition and us senator , wife of old to us president bill clinton in 27 august 2008 barack obama was ëmërua into way official to and from interior party demoktratike like candidate for president .} \\
+Albanian & {barack obama barack hussein obama ( born in 4 august 1961 in belmont , obama ) is president of 44 - to of united states of to us . barack obama is successful of price for nobel prize in year 2009 . he is president first about - american . 
+in that year 2004 was elected to us adjourned in mammograms . as for deputy president campaign of elections and declared in 10 short 2007 into reverse ( mammograms ) . on 3 june 2008 obama reached , according to data to tunnel , and cut necessary to vote for months as to candidate for president , within that his party , left by after thus exhaustive and us paratroopers , wife of old president of us hillary clinton . under 27 august 2008 barack obama was paving way official in from and to interior party for democratic nominee for president .} \\
 \hline
-Indonesian & {barack feared obama ii ( ; ) is american president union which currently served is american and president union which ke-44. barack served since 20 january 2009 replace george mandarin bush. before he is junior senator from illinois and then win in election president 2008 into 4 november 2008. into year 2009 , obama announced as winner gift act peace prize because promote international diplomacy to solve international problems . obama descent is africa first which served president union american after previously descent is africa the first farewell by a political parties large american to make president graduate and columbia university law school university ; harvard in there he served as president laws harvard reviewed , obama work as many coordinator and served as lawyer civil rights before making senate zlatko during three time begin 1997 until 2004.} \\
+Indonesian & {barack feared obama ii ( ; ) is american president union which currently served is american and president union which ke-44. barack served since 20 january 2009 replace george mandarin bush. before he is junior senator from illinois and then win in election president 2008 into 4 november 2008. into year 2009 , obama announced as winner gift act peace prize because promote international diplomacy to solve international problems . 
+obama descent is africa first which served president union american after previously descent is africa the first farewell by a political parties large american to make president graduate and columbia university law school university ; harvard in there he served as president laws harvard reviewed , obama work as many coordinator and served as lawyer civil rights before making senate zlatko during three time begin 1997 until 2004.} \\
 \hline
-\caption{Translations of the first 4-5 sentences of each source language Wikipedia page on {\it Barack Obama}. Note that some characters in OOV words aren't displayed properly here. This table will be updated soon. In the meantime, these results can be found on the a01 clsp node, at: /mnt/data/anni/Experiments/LANG-en/work.3.dict/evaluation/plcw-m/test.tuned-filtered.out where LANG is the two character language code.} \label{table:qualtrans}  \\
+\caption{Translations of the first 4-5 sentences of each source language Wikipedia page on {\it Barack Obama}.} \label{table:qualtrans}  \\
 \end{longtable}
 \end{center}
 %\vskip -0.1in
