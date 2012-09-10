@@ -1,0 +1,31 @@
+Reading dictionary
+Reading frequency files
+Reading crawls and wiki scored files
+Number of FR words scored: 730
+Number of EN words in any ranked list: 53666
+Number of FR words with correct translations in crawls context list: 216
+Number of FR words with correct translations in crawls time list: 94
+Number of FR words with correct translations in crawls edit list: 176
+Number of FR words with correct translations in wiki context list: 5
+Number of FR words with correct translations in wiki topic list: 304
+Number of FR words with correct translations in wiki edit list: 89
+Number of words for which a correct English word appears in any ranked list: 468 or 64.11 percent
+Correct EN not found in CAND rankings: 105
+Correct EN not found in AGGMRR rankings: 157
+
+Mean reciprocal rank of AGG-MRR ranks: 0.0577866090011
+Mean reciprocal rank of ML-learned weighted ranks: 0.171891386391
+
+Accuracy in top-1:
+MRR: 0.0331325301205
+Cand: 0.120481927711
+
+Accuracy in top-10:
+MRR: 0.111445783133
+Cand: 0.256024096386
+
+Accuracy in top-100:
+MRR: 0.201807228916
+Cand: 0.472891566265
+[u'223.1', u'66.8', u'43.0', u'31.1', u'24.3', u'19.9', u'16.9', u'14.2', u'12.5', u'11.2']
+Done.

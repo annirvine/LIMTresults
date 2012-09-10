@@ -1,0 +1,70 @@
+final_regressor = so/train.model
+Num weight bits = 18
+learning rate = 10
+initial_t = 1
+power_t = 0.5
+decay_learning_rate = 1
+creating cache_file = so/train.data.cache
+Reading from so/train.data
+num sources = 1
+average    since         example     example  current  current  current
+loss       last          counter      weight    label  predict features
+0.580597   0.580597            3         3.0   1.0000   1.0000       10
+1.304626   2.028654            6         6.0  -1.0000   0.3532       10
+1.857718   2.521430           11        11.0   1.0000  -1.0000       10
+1.382688   0.907658           22        22.0  -1.0000  -1.0000       10
+1.266050   1.149412           44        44.0  -1.0000  -1.0000       10
+1.150110   1.031475           87        87.0  -1.0000  -1.0000       10
+1.087395   1.024679          174       174.0  -1.0000  -0.5655       10
+1.083065   1.078736          348       348.0  -1.0000   0.1577       10
+0.943214   0.803363          696       696.0  -1.0000  -0.8190       10
+0.863318   0.783422         1392      1392.0  -1.0000  -1.0000       10
+0.791407   0.719497         2784      2784.0   1.0000   1.0000       10
+0.727544   0.663681         5568      5568.0  -1.0000  -1.0000       10
+
+finished run
+number of examples = 9580
+weighted example sum = 9580
+weighted label sum = -3560
+average loss = 0.6917
+best constant = -0.3718
+total feature number = 95800
+Num weight bits = 18
+learning rate = 10
+initial_t = 1
+power_t = 0.5
+predictions = so/test.predictions
+raw predictions = so/test.scores
+only testing
+using no cache
+Reading from so/test.data
+num sources = 1
+average    since         example     example  current  current  current
+loss       last          counter      weight    label  predict features
+0.006970   0.006970            3         3.0  -1.0000  -1.0000       10
+0.003485   0.000000            6         6.0  -1.0000  -1.0000       10
+0.001901   0.000000           11        11.0  -1.0000  -1.0000       10
+0.001323   0.000745           22        22.0  -1.0000  -1.0000       10
+0.004818   0.008313           44        44.0  -1.0000  -1.0000       10
+0.005917   0.007042           87        87.0  -1.0000  -1.0000       10
+0.007070   0.008224          174       174.0  -1.0000  -1.0000       10
+0.008885   0.010700          348       348.0  -1.0000  -1.0000       10
+0.016788   0.024692          696       696.0  -1.0000  -1.0000       10
+0.012692   0.008595         1392      1392.0  -1.0000  -1.0000       10
+0.305031   0.597370         2784      2784.0  -1.0000  -0.5898       10
+0.307087   0.309144         5568      5568.0  -1.0000  -1.0000       10
+0.356465   0.405851        11135     11135.0  -1.0000  -0.5245       10
+0.329166   0.301865        22269     22269.0  -1.0000  -1.0000       10
+0.291256   0.253343        44537     44537.0  -1.0000  -1.0000       10
+0.262182   0.233108        89073     89073.0  -1.0000  -1.0000       10
+0.250487   0.238791       178146    178146.0  -1.0000  -0.5746       10
+0.253532   0.256577       356291    356291.0  -1.0000  -1.0000       10
+0.242881   0.232229       712582    712582.0  -1.0000  -0.3622       10
+
+finished run
+number of examples = 860618
+weighted example sum = 8.606e+05
+weighted label sum = -8.6e+05
+average loss = 0.2415
+best constant = -0.9992
+total feature number = 8606180

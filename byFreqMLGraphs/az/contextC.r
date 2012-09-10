@@ -53,7 +53,7 @@ lines(x, y100, type="o", pch=pts[3], lty=types[3], lwd=3, col=colors[3])
 grid(col = "black", lty = "dotted", lwd = 1, equilogs = TRUE)
 
 title(ylab="Accuracy, %")
-title(xlab="Corpus Frequency")
+title(xlab="Frequency in Crawled Data")
 title(main="Lexicon Induction Accuracy for az")
 
 legend("bottomright", cex=slabels, names, col=colors, lty=types, pch=pts, lwd=3, bty="y", bg="white");
